@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "ROLE")
 public class Role  implements Serializable {
-
+	@Id
 	@Column(name = "ROLEID")
 	private Long roleid;
 

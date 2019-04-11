@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "JURISDICTION")
 public class Jurisdiction  implements Serializable {
-
+	@Id
 	@Column(name = "JDID")
 	private Long jdid;
 

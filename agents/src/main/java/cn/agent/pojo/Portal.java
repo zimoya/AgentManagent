@@ -10,6 +10,7 @@ import java.io.Serializable;
 @Table(name = "PORTAL")
 public class Portal  implements Serializable {
 
+	@Id
 	@Column(name = "PORTALID")
 	private Long portalid;
 

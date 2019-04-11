@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "SERVICETIME")
 public class Servicetime  implements Serializable {
-
+	@Id
 	@Column(name = "STID")
 	private Long stid;
 

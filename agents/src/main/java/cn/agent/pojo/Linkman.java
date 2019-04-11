@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "LINKMAN")
 public class Linkman  implements Serializable {
-
+	@Id
 	@Column(name = "LINKMANID")
 	private Long linkmanid;
 

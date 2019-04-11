@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "KEYWORD")
 public class Keyword  implements Serializable {
-
+	@Id
 	@Column(name = "KWID")
 	private Long kwid;
 
