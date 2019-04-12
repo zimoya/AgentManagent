@@ -5,18 +5,26 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Data
+/**
+ * App地址
+ */
 @Entity
 @Table(name = "APPADDRESS")
 public class Appaddress  implements Serializable {
-
+	/**
+	 * App编号
+	 */
 	@Id
-	@Column(name = "APPID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long appid;
-
+	/**
+	 * 配置名称
+	 */
 	@Column(name = "CONFIGNAME")
 	private String configname;
-
+	/**
+	 * 配置数值
+	 */
 	@Column(name = "CONFIGVALUE")
 	private String configvalue;
 
@@ -49,4 +57,5 @@ public class Appaddress  implements Serializable {
 	void setConfigvalue(String configvalue) {
 		this.configvalue = configvalue;
 	}
+
 }

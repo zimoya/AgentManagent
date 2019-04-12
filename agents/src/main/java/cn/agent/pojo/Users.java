@@ -4,42 +4,89 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
-
+/**
+ * 用户
+ */
 @Entity
 @Table(name = "USERS")
 public class Users  implements Serializable {
-
+	/**
+	 * 用户编号
+	 */
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userid;
-
+	/**
+	 * 用户名称
+	 */
 	@Column(name = "USERNAME")
 	private String username;
-
+	/**
+	 * 密码
+	 */
 	@Column(name = "PASSWORD")
 	private String password;
-
+	/**
+	 * 姓名
+	 */
 	@Column(name = "NAME")
 	private String name;
-
+	/**
+	 * 账户余额
+	 */
 	@Column(name = "BALANCE")
 	private Double balance;
-
+	/**
+	 * 电话
+	 */
 	@Column(name = "TELEPHONE")
 	private String telephone;
-
-	@Column(name = "ROLEID")
-	private Long roleid;
-
+	/**
+	 * 证件类型id
+	 */
 	@Column(name = "TYPEID")
 	private Long typeid;
-
+	/**
+	 * 证件编号
+	 */
 	@Column(name = "CERTIFICATEVALUE")
 	private String certificatevalue;
-
+	/**
+	 * 最后一次登录时间
+	 */
 	@Column(name = "LASTLOGINTIME")
-	private java.sql.Date lastlogintime;
+	private Date lastlogintime; //最后一次登录时间
+	/**
+	 * 角色
+	 */
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="ROLEID")
+	private Role role;
+
+	/**
+	 * 财务明细
+	 */
+	@OneToMany(mappedBy = "users",cascade = CascadeType.MERGE)
+	private Set<Finance> finances=new HashSet<Finance>();
+	/**
+	 * 日志
+	 */
+	@OneToMany(mappedBy = "users",cascade = CascadeType.MERGE)
+	private Set<Log> logs=new HashSet<Log>();
+	/**
+	 * 客户
+	 */
+	@OneToMany(mappedBy = "users",cascade = CascadeType.MERGE)
+	private Set<Client> clients=new HashSet<Client>();
+	/**
+	 * 关键字
+	 */
+	@OneToMany(mappedBy = "users",cascade = CascadeType.MERGE)
+	private Set<Keyword> keywords=new HashSet<Keyword>();
 
 	public Long getUserid() {
 		return userid;
@@ -89,12 +136,12 @@ public class Users  implements Serializable {
 		this.telephone = telephone;
 	}
 
-	public Long getRoleid() {
-		return roleid;
+	public Role getRole() {
+		return role;
 	}
 
-	public void setRoleid(Long roleid) {
-		this.roleid = roleid;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 	public Long getTypeid() {
@@ -119,5 +166,37 @@ public class Users  implements Serializable {
 
 	public void setLastlogintime(Date lastlogintime) {
 		this.lastlogintime = lastlogintime;
+	}
+
+	public Set<Finance> getFinances() {
+		return finances;
+	}
+
+	public void setFinances(Set<Finance> finances) {
+		this.finances = finances;
+	}
+
+	public Set<Log> getLogs() {
+		return logs;
+	}
+
+	public void setLogs(Set<Log> logs) {
+		this.logs = logs;
+	}
+
+	public Set<Client> getClients() {
+		return clients;
+	}
+
+	public void setClients(Set<Client> clients) {
+		this.clients = clients;
+	}
+
+	public Set<Keyword> getKeywords() {
+		return keywords;
+	}
+
+	public void setKeywords(Set<Keyword> keywords) {
+		this.keywords = keywords;
 	}
 }
