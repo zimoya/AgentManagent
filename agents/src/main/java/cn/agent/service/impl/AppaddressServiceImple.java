@@ -31,6 +31,12 @@ class AppaddressServiceImple implements AppaddressService {
 
     @Override
     public
+    List<Appaddress> findPageAppaddress(Appaddress appaddress, int pageSum) {
+        return null;
+    }
+
+    @Override
+    public
     Appaddress findById(Long id) {
         return null;
     }
