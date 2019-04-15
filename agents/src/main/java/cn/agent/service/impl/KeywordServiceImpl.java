@@ -2,13 +2,15 @@ package cn.agent.service.impl;
 
 import cn.agent.pojo.Keyword;
 import cn.agent.service.KeywordService;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public
-class KeywordServiceImple implements KeywordService {
+class KeywordServiceImpl implements KeywordService {
 
 
     @Override
@@ -32,6 +34,8 @@ class KeywordServiceImple implements KeywordService {
     @Override
     public
     List<Keyword> findPageKeyword(Keyword keyword, int pageSum) {
+        Pageable pageable = null;
+
         return null;
     }
 

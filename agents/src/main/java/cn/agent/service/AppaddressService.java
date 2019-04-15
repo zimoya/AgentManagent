@@ -27,7 +27,17 @@ interface AppaddressService {
      * @param appaddress 条件
      * @return APP地址list
      */
-    List<Appaddress> findAllAppaddress(Appaddress appaddress);/**
+    List<Appaddress> findAllAppaddress(Appaddress appaddress);
+    /**
+     * 根据条件获取指定页数的APP地址对象
+     * @param appaddress 条件
+     * @param pageSum 页数
+     * @return APP地址list
+     */
+    List<Appaddress> findPageAppaddress(Appaddress appaddress,int pageSum);
+
+
+    /**
      * 根据id查询APP地址
      * @param id 条件
      * @return APP地址
