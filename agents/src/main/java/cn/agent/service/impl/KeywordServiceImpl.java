@@ -20,7 +20,12 @@ class KeywordServiceImpl implements KeywordService {
     @Override
     public
     boolean update(Keyword keyword) {
+        if(keywordDao.existsById( keyword.getKwid() )){
+            Keyword keywordResult=keywordDao.saveAndFlush( keyword );
+            return keywordResult==null;
+        }
         return false;
+
     }
 
     @Override
@@ -37,33 +42,38 @@ class KeywordServiceImpl implements KeywordService {
 
     @Override
     public
-    Page<Keyword> findPageKeyword(String kwname, int pageSum) {
-        Pageable pageable = PageRequest.of( pageSum==0?1:pageSum,5 );
+    Page<Keyword> findPageKeyword(String kwname, Integer pageSum) {
+        Pageable pageable = PageRequest.of( pageSum==0?0:pageSum,5 );
         Page<Keyword> keywords=null;
         //参数是否为空
-        if(kwname==null && kwname.length()<=0){ //没有条件限制
+        if(kwname==null || kwname.length()<=0){ //没有条件限制
             keywords=keywordDao.findAll(pageable);
-        }else{
-            keywords=keywordDao.findByKwnamePage( kwname ,pageable);
+        }else{//存在条件限制后
+            keywords=keywordDao.queryKeywordsByKwname( kwname ,pageable);
         }
         return keywords;
     }
 
     @Override
     public
-    Long getCount(Keyword keyword) {
-        return null;
+    Long getCount(String kwname) {
+        if(kwname==null && kwname.length()<=0){ //没有条件限制
+            return keywordDao.count();
+        }else{//存在条件限制后
+            return keywordDao.findCount( kwname );
+        }
     }
 
     @Override
     public
     Keyword findById(Long id) {
-        return null;
+        return keywordDao.getOne( id );
     }
 
     @Override
     public
-    boolean delete(Keyword keyword) {
-        return false;
+    boolean delete(Long id) {
+        keywordDao.deleteById( id );
+        return keywordDao.existsById( id )==true;
     }
 }

@@ -16,8 +16,11 @@ import org.springframework.data.repository.query.Param;
 @RepositoryDefinition(domainClass= Keyword.class,idClass=Long.class)
 public
 interface KeywordDao extends JpaRepository<Keyword,Long> {
-    @Query(value = "SELECT * FROM KEYWORD WHERE KWNAME = :kwname",
+    /*@Query(value = "SELECT * FROM KEYWORD WHERE KWNAME = :kwname",
             countQuery = "SELECT count(*) FROM KEYWORD WHERE KWNAME = :kwname",
             nativeQuery = true)
-    Page<Keyword> findByKwnamePage(@Param( "kwname" ) String kwname, Pageable pageable);
+    Page<Keyword> findByKwnamePage(@Param( "kwname" ) String kwname, Pageable pageable);*/
+    Page<Keyword> queryKeywordsByKwname(String kwname, Pageable pageable);
+    @Query("select count(1) from Keyword  k where k.kwname=:kwname ")
+    Long findCount(@Param( "kwname" ) String kwname);
 }

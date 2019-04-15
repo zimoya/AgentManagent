@@ -12,7 +12,7 @@ interface KeywordService {
     /**
      * 修改关键字
      *
-     * @param keyword 条件
+     * @param keyword 条件 必须有id在数据库存在不然会变成新增的
      * @return 是否修改成功
      */
     boolean update(Keyword keyword);
@@ -39,14 +39,14 @@ interface KeywordService {
      * @param pageSum 页数
      * @return 关键字list
      */
-    Page<Keyword> findPageKeyword(String kwname, int pageSum);
+    Page<Keyword> findPageKeyword(String kwname, Integer pageSum);
 
     /**
      * 获取满足条件的记录数
-     * @param keyword 条件  条件为null时获取所有
+     * @param kwname 名称条件  条件为null时获取所有
      * @return 记录个数
      */
-    Long getCount(Keyword keyword);
+    Long getCount(String kwname);
     /**
      * 根据id查询关键字
      *
@@ -58,9 +58,9 @@ interface KeywordService {
     /**
      * 删除关键字
      *
-     * @param keyword 条件
+     * @param id 条件
      * @return 是否删除成功
      */
-    boolean delete(Keyword keyword);
+    boolean delete(Long id);
 
 }

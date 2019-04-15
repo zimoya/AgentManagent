@@ -22,9 +22,40 @@ class KeywordController {
     @RequestMapping("/selKeywordByPageAndName")
     public
     ModelAndView selKeywordByPageAndName(String kwname, Integer pageSum) {
-        Page<Keyword> keywordPage = keywordService.findPageKeyword( kwname, pageSum );
+        Page<Keyword> keywordPage = keywordService.findPageKeyword( kwname, pageSum==null?0:pageSum );
         ModelAndView modelAndView = new ModelAndView( "" );
         modelAndView.addObject( "keywordPage", keywordPage );
         return modelAndView;
     }
+
+    @RequestMapping("/delByid")
+    public
+    ModelAndView delByid(Long id) {
+        ModelAndView modelAndView = new ModelAndView( "" );
+        modelAndView.addObject( "delresult", keywordService.delete( id ) );
+        return modelAndView;
+    }
+    @RequestMapping("/updateByid")
+    public
+    ModelAndView updateByid(Keyword keyword) {
+        ModelAndView modelAndView = new ModelAndView( "" );
+        modelAndView.addObject( "delresult", keywordService.update(keyword) );
+        return modelAndView;
+    }
+    @RequestMapping("/getCount")
+    public
+    ModelAndView getCount(String kwname) {
+        ModelAndView modelAndView = new ModelAndView( "" );
+        modelAndView.addObject( "keywordCount", keywordService.getCount(kwname ) );
+        return modelAndView;
+    }
+    @RequestMapping("/getKeywordById")
+    public
+    ModelAndView getKeywordById(Long id) {
+        ModelAndView modelAndView = new ModelAndView( "" );
+        modelAndView.addObject( "keywordEntity", keywordService.findById(id ) );
+        return modelAndView;
+    }
+
+
 }
