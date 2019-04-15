@@ -2,6 +2,7 @@ package cn.agent.service.impl;
 
 import cn.agent.pojo.Client;
 import cn.agent.service.ClientService;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,7 +32,7 @@ class ClientServiceImple implements ClientService {
 
     @Override
     public
-    List<Client> findPageClient(Client client, int pageSum) {
+    Page<Client> findPageClient(Client client, int pageSum) {
         return null;
     }
 

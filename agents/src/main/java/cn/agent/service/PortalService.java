@@ -1,6 +1,7 @@
 package cn.agent.service;
 
 import cn.agent.pojo.Portal;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,7 +39,7 @@ interface PortalService {
      * @param pageSum 页数
      * @return 门户信息list
      */
-    List<Portal> findPagePortal(Portal portal,int pageSum);
+    Page<Portal> findPagePortal(Portal portal, int pageSum);
 
     /**
      * 获取满足条件的记录数

@@ -1,6 +1,7 @@
 package cn.agent.service;
 
 import cn.agent.pojo.Log;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +32,7 @@ interface LogService {
      * @param pageSum 页数
      * @return 日志list
      */
-    List<Log> findPageLog(Log log,int pageSum);
+    Page<Log> findPageLog(Log log, int pageSum);
 
     /**
      * 获取满足条件的记录数

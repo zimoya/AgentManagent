@@ -1,6 +1,7 @@
 package cn.agent.service;
 
 import cn.agent.pojo.Servicetime;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,7 +39,7 @@ interface ServicetimeService {
      * @param pageSum 页数
      * @return 服务年限list
      */
-    List<Servicetime> findPageServicetime(Servicetime servicetime,int pageSum);
+    Page<Servicetime> findPageServicetime(Servicetime servicetime, int pageSum);
 
     /**
      * 获取满足条件的记录数

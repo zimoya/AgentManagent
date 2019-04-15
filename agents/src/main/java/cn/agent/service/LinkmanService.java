@@ -1,6 +1,7 @@
 package cn.agent.service;
 
 import cn.agent.pojo.Linkman;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,7 +39,7 @@ interface LinkmanService {
      * @param pageSum 页数
      * @return 联系人list
      */
-    List<Linkman> findPageLinkman(Linkman linkman,int pageSum);
+    Page<Linkman> findPageLinkman(Linkman linkman, int pageSum);
 
     /**
      * 获取满足条件的记录数

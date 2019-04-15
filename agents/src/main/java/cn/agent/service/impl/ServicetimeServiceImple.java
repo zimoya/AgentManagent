@@ -2,6 +2,7 @@ package cn.agent.service.impl;
 
 import cn.agent.pojo.Servicetime;
 import cn.agent.service.ServicetimeService;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,7 +32,7 @@ class ServicetimeServiceImple implements ServicetimeService {
 
     @Override
     public
-    List<Servicetime> findPageServicetime(Servicetime servicetime, int pageSum) {
+    Page<Servicetime> findPageServicetime(Servicetime servicetime, int pageSum) {
         return null;
     }
 

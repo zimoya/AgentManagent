@@ -2,6 +2,7 @@ package cn.agent.service.impl;
 
 import cn.agent.pojo.Role;
 import cn.agent.service.RoleService;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,7 +32,7 @@ class RoleServiceImple implements RoleService {
 
     @Override
     public
-    List<Role> findPageRole(Role role, int pageSum) {
+    Page<Role> findPageRole(Role role, int pageSum) {
         return null;
     }
 

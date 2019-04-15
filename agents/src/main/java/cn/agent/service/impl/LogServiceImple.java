@@ -2,6 +2,7 @@ package cn.agent.service.impl;
 
 import cn.agent.pojo.Log;
 import cn.agent.service.LogService;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +26,7 @@ class LogServiceImple implements LogService {
 
     @Override
     public
-    List<Log> findPageLog(Log log, int pageSum) {
+    Page<Log> findPageLog(Log log, int pageSum) {
         return null;
     }
 

@@ -1,6 +1,7 @@
 package cn.agent.service;
 
 import cn.agent.pojo.Client;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,7 +40,7 @@ interface ClientService {
      * @param pageSum 页数
      * @return 客户信息list
      */
-    List<Client> findPageClient(Client client,int pageSum);
+    Page<Client> findPageClient(Client client, int pageSum);
 
     /**
      * 获取满足条件的记录数

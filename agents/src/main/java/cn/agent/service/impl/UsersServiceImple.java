@@ -2,6 +2,7 @@ package cn.agent.service.impl;
 
 import cn.agent.pojo.Users;
 import cn.agent.service.UsersService;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,7 +32,7 @@ class UsersServiceImple implements UsersService {
 
     @Override
     public
-    List<Users> findPageUsers(Users users, int pageSum) {
+    Page<Users> findPageUsers(Users users, int pageSum) {
         return null;
     }
 

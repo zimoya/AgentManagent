@@ -2,6 +2,7 @@ package cn.agent.service.impl;
 
 import cn.agent.pojo.Linkman;
 import cn.agent.service.LinkmanService;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,7 +32,7 @@ class LinkmanServiceImple implements LinkmanService {
 
     @Override
     public
-    List<Linkman> findPageLinkman(Linkman linkman, int pageSum) {
+    Page<Linkman> findPageLinkman(Linkman linkman, int pageSum) {
         return null;
     }
 

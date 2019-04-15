@@ -1,6 +1,7 @@
 package cn.agent.service;
 
 import cn.agent.pojo.Keyword;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,11 +35,11 @@ interface KeywordService {
 
     /**
      * 根据条件获取指定页数的关键字对象
-     * @param keyword 关键字条件
+     * @param kwname 关键字名称
      * @param pageSum 页数
      * @return 关键字list
      */
-    List<Keyword> findPageKeyword(Keyword keyword,int pageSum);
+    Page<Keyword> findPageKeyword(String kwname, int pageSum);
 
     /**
      * 获取满足条件的记录数

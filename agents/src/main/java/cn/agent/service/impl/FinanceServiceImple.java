@@ -2,6 +2,7 @@ package cn.agent.service.impl;
 
 import cn.agent.pojo.Finance;
 import cn.agent.service.FinanceService;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,7 +32,7 @@ class FinanceServiceImple implements FinanceService {
 
     @Override
     public
-    List<Finance> findPageFinance(Finance finance, int pageSum) {
+    Page<Finance> findPageFinance(Finance finance, int pageSum) {
         return null;
     }
 

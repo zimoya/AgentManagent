@@ -1,6 +1,7 @@
 package cn.agent.service;
 
 import cn.agent.pojo.Appaddress;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,7 +35,7 @@ interface AppaddressService {
      * @param pageSum 页数
      * @return APP地址list
      */
-    List<Appaddress> findPageAppaddress(Appaddress appaddress,int pageSum);
+    Page<Appaddress> findPageAppaddress(Appaddress appaddress, int pageSum);
 
 
     /**

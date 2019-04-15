@@ -2,6 +2,7 @@ package cn.agent.service.impl;
 
 import cn.agent.pojo.Types;
 import cn.agent.service.TypesService;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,7 +32,7 @@ class TypesServiceImple implements TypesService {
 
     @Override
     public
-    List<Types> findPageTypes(Types types, int pageSum) {
+    Page<Types> findPageTypes(Types types, int pageSum) {
         return null;
     }
 

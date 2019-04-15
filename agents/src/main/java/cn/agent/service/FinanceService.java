@@ -1,6 +1,7 @@
 package cn.agent.service;
 
 import cn.agent.pojo.Finance;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,7 +39,7 @@ interface FinanceService {
      * @param pageSum 页数
      * @return 财务明细list
      */
-    List<Finance> findPageFinance(Finance finance,int pageSum);
+    Page<Finance> findPageFinance(Finance finance, int pageSum);
 
     /**
      * 获取满足条件的记录数

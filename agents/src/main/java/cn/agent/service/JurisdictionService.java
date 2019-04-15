@@ -1,6 +1,7 @@
 package cn.agent.service;
 
 import cn.agent.pojo.Jurisdiction;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,7 +39,7 @@ interface JurisdictionService {
      * @param pageSum 页数
      * @return 权限list
      */
-    List<Jurisdiction> findPageJurisdiction(Jurisdiction jurisdiction, int pageSum);
+    Page<Jurisdiction> findPageJurisdiction(Jurisdiction jurisdiction, int pageSum);
 
     /**
      * 获取满足条件的记录数

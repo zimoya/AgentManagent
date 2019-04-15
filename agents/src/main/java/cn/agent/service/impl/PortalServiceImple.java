@@ -2,6 +2,7 @@ package cn.agent.service.impl;
 
 import cn.agent.pojo.Portal;
 import cn.agent.service.PortalService;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,7 +32,7 @@ class PortalServiceImple implements PortalService {
 
     @Override
     public
-    List<Portal> findPagePortal(Portal portal, int pageSum) {
+    Page<Portal> findPagePortal(Portal portal, int pageSum) {
         return null;
     }
 

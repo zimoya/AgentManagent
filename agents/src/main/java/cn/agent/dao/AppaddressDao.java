@@ -10,4 +10,5 @@ import org.springframework.data.repository.RepositoryDefinition;
  * Query注解中加入nativeQuery=true 属性表示使用原生sql，否则默认是hql（实体类查）
  */
 public interface AppaddressDao extends JpaRepository<Appaddress,Long> {
+
 }

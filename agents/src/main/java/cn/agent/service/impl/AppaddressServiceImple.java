@@ -2,6 +2,7 @@ package cn.agent.service.impl;
 
 import cn.agent.pojo.Appaddress;
 import cn.agent.service.AppaddressService;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,7 +32,7 @@ class AppaddressServiceImple implements AppaddressService {
 
     @Override
     public
-    List<Appaddress> findPageAppaddress(Appaddress appaddress, int pageSum) {
+    Page<Appaddress> findPageAppaddress(Appaddress appaddress, int pageSum) {
         return null;
     }
 

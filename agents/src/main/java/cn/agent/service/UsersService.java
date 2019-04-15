@@ -1,6 +1,7 @@
 package cn.agent.service;
 
 import cn.agent.pojo.Users;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,7 +40,7 @@ interface UsersService {
      * @param pageSum 页数
      * @return 用户list
      */
-    List<Users> findPageUsers(Users users, int pageSum);
+    Page<Users> findPageUsers(Users users, int pageSum);
 
     /**
      * 获取满足条件的记录数

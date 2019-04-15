@@ -1,6 +1,7 @@
 package cn.agent.service;
 
 import cn.agent.pojo.Types;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,7 +39,7 @@ interface TypesService {
      * @param pageSum 页数
      * @return 类型list
      */
-    List<Types> findPageTypes(Types types,int pageSum);
+    Page<Types> findPageTypes(Types types, int pageSum);
 
     /**
      * 获取满足条件的记录数

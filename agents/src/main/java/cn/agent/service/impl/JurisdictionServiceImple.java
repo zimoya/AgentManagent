@@ -2,6 +2,7 @@ package cn.agent.service.impl;
 
 import cn.agent.pojo.Jurisdiction;
 import cn.agent.service.JurisdictionService;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,7 +32,7 @@ class JurisdictionServiceImple implements JurisdictionService {
 
     @Override
     public
-    List<Jurisdiction> findPageJurisdiction(Jurisdiction jurisdiction, int pageSum) {
+    Page<Jurisdiction> findPageJurisdiction(Jurisdiction jurisdiction, int pageSum) {
         return null;
     }
 
