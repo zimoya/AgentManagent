@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>代理商管理</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <style>
+
+      #div_centext div{padding: 10px;}
+      #div_centext a{color: blue;}
+      #esc{position: absolute;width: 500px;top: 40px;left: 780px;}
+      a {text-decoration: none;color: black;}
+      #div_from{display: none;}
+    </style>
+
+  </head>
+  <body>
+
+    <div id="div_centext">
+      <div>
+        <strong>你好,韩璐!</strong>您上次登录时间 <span>2013-11-18 09:57:23</span>
+      </div>
+      <div>您当前账户余额:$:156465148<a href="check_Account_Details.html">查看账户明细</a></div>
+    </div>
+    <script>
+        $("#up").click(function () {
+            $("#div_from ").show();
+        });
+        $("#rest").click(function () {
+            $("input[type=text]").val("");
+            $("#div_from ").hide();
+        })
+
+    </script>
+  </body>
+</html>
