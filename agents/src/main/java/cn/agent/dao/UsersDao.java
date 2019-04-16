@@ -3,6 +3,7 @@ package cn.agent.dao;
 import cn.agent.pojo.Appaddress;
 import cn.agent.pojo.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.RepositoryDefinition;
 
 
@@ -13,4 +14,11 @@ import org.springframework.data.repository.RepositoryDefinition;
 @RepositoryDefinition(domainClass= Users.class,idClass=Long.class)
 public
 interface UsersDao extends JpaRepository<Users,Long> {
+    /**
+     * 根据用户名查询用户信息，实现登录功能
+     * @param username
+     * @return
+     */
+    Users findUsersByUsername(String username);
+
 }

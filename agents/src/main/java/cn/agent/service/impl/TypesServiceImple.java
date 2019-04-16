@@ -1,5 +1,6 @@
 package cn.agent.service.impl;
 
+import cn.agent.dao.TypesDao;
 import cn.agent.pojo.Types;
 import cn.agent.service.TypesService;
 import org.springframework.data.domain.Page;
@@ -10,7 +11,6 @@ import java.util.List;
 @Service
 public
 class TypesServiceImple implements TypesService {
-
 
     @Override
     public
