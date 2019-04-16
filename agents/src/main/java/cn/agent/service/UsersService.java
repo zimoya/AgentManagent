@@ -66,4 +66,11 @@ interface UsersService {
      */
     boolean delete(Users users);
 
+    /**
+     * 根据用户名查询用户信息，实现登录功能
+     * @param username
+     * @return
+     */
+    Users findUsersByUsername(String username);
+
 }
