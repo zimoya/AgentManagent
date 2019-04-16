@@ -1,7 +1,5 @@
 package cn.agent.pojo;
 
-import lombok.Data;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -85,6 +83,21 @@ public class Keyword  implements Serializable {
 	 */
 	@Column(name = "USESTATUS")
 	private Long usestatus;
+	/**
+	 * APP开通状态  1未开通  2开通
+	 */
+	@Column(name="APPSTATUS")
+	private Long appStatus;
+
+	public
+	Long getAppStatus() {
+		return appStatus;
+	}
+
+	public
+	void setAppStatus(Long appStatus) {
+		this.appStatus = appStatus;
+	}
 
 	public Long getKwid() {
 		return kwid;

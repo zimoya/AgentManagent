@@ -1,10 +1,10 @@
 package cn.agent.pojo;
 
-import lombok.Data;
+
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * log日志表
@@ -39,7 +39,7 @@ public class Log  implements Serializable {
 	 * 操作信息
 	 */
 	@Column(name = "LOGTIME")
-	private java.sql.Date logtime;
+	private Date logtime;
 
 	public Long getLogid() {
 		return logid;
