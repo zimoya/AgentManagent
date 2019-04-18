@@ -64,16 +64,16 @@
 
         #body #LOG-Money .bottom .page li:hover,#body #selected #bottom #page li:hover{cursor:pointer;background-color: #ccc;}
         #div_from{display: none;background:gray;position: absolute;top:400px;left:400px;z-index: 100;width: 300px;}
-        #div_from div{padding: 10px;}
+        #div_from div{padding: 10px;display: flex;justify-content: center;}
         iframe{position: absolute;top: 254px;left: 50px;width: 980px;height: 510px;border: 0;}
     </style>
   </head>
   <body>
 
   <div id="topRight">
-      <span>欢迎你:<span>名称</span></span>
+      <span>欢迎你:<span id="names"></span></span>
       <a href="javascript:" id="up">修改密码</a>
-      <a href="#">退出</a>
+      <a href="#" id="exit">退出</a>
   </div>
   <div id="div_from">
       <form>
@@ -159,5 +159,6 @@
 
     </script>
   <script th:src="@{/resource/scripts/js/agentManage.js}"></script>
+  <script th:src="@{/resource/scripts/js/AgentManages.js}"></script>
   </body>
 </html>

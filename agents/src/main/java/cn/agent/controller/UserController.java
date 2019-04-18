@@ -68,7 +68,6 @@ public class UserController {
                     log.setLoginfo("用户进行登录，操作成功");
                     log.setLogtime(new Date());
                     logService.insertLog(log);
-                System.out.println(logService.insertLog(log));
             }else{
                 falg="error";
             }
@@ -138,12 +137,12 @@ public class UserController {
      */
     @RequestMapping(value = "/userInfo")
     @ResponseBody
-    public Object findUserInfo(HttpSession session){
+    public Users findUserInfo(HttpSession session){
         Users users=(Users) session.getAttribute("user");
         users.setRole(null);
         users.setKeywords(null);
         users.setLogs(null);
         users.setClients(null);
-        return JSON.toJSONString(users);
+        return users;
     }
 }
