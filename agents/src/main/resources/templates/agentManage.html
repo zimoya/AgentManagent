@@ -63,7 +63,8 @@
         #body #LOG-Money .bottom .page .active{background-color: #ccc;}
 
         #body #LOG-Money .bottom .page li:hover,#body #selected #bottom #page li:hover{cursor:pointer;background-color: #ccc;}
-        #div_from{display: none;}
+        #div_from{display: none;background:gray;position: absolute;top:400px;left:400px;z-index: 100;width: 300px;}
+        #div_from div{padding: 10px;}
         iframe{position: absolute;top: 254px;left: 50px;width: 980px;height: 510px;border: 0;}
     </style>
   </head>
@@ -76,11 +77,11 @@
   </div>
   <div id="div_from">
       <form>
-          请输入原密码:<input type="text" name="oldpassword">
-          请输入新密码:<input type="password" name="newpassword">
-          请确认新密码:<input type="password" name="comnepwd">
-          <input type="button" value="提交">
-          <input type="button"  id="rest" value="取消">
+         <div>请输入原密码:<input type="text" name="oldpassword"></div>
+          <div> 请输入新密码:<input type="password" name="newpassword"></div>
+          <div>  请确认新密码:<input type="password" name="comnepwd"></div>
+          <div> <input type="button" value="提交">
+          <input type="button"  id="rest" value="取消"></div>
       </form>
   </div>
   <div id="head">
