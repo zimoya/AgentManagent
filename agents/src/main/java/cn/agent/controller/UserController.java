@@ -13,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -119,7 +120,7 @@ public class UserController {
      * @param pageSum
      * @return
      */
-    @RequestMapping
+    @RequestMapping(value="/UsersDetail")
     @ResponseBody
     public Page<Finance> getUsersDetail(@Param("createTime1")Date createTime1,@Param("createTime2") Date createTime2,@Param("pageSum") int pageSum,HttpSession session){
         System.out.println("===================================createTime1="+createTime1);
@@ -129,5 +130,20 @@ public class UserController {
         int pageSize=5;
         Page<Finance> finances=financeService.queryFinanceByCreatetimeBetween(createTime1,createTime2,userid,pageSum,pageSize);
         return finances;
+    }
+
+    /**
+     * 查看用户资料
+     * @return
+     */
+    @RequestMapping(value = "/userInfo")
+    @ResponseBody
+    public Object findUserInfo(HttpSession session){
+        Users users=(Users) session.getAttribute("user");
+        users.setRole(null);
+        users.setKeywords(null);
+        users.setLogs(null);
+        users.setClients(null);
+        return JSON.toJSONString(users);
     }
 }
