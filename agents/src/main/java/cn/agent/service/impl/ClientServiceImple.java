@@ -1,7 +1,9 @@
 package cn.agent.service.impl;
 
+import cn.agent.dao.ClientDao;
 import cn.agent.pojo.Client;
 import cn.agent.service.ClientService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -11,17 +13,20 @@ import java.util.List;
 public
 class ClientServiceImple implements ClientService {
 
+    @Autowired
+    private
+    ClientDao clientDao;
 
     @Override
     public
     boolean update(Client client) {
-        return false;
+        return clientDao.saveAndFlush( client )==null;
     }
 
     @Override
     public
-    boolean insert(Client client) {
-        return false;
+    Client insert(Client client) {
+        return clientDao.saveAndFlush( client );
     }
 
     @Override

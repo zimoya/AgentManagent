@@ -12,6 +12,17 @@ import java.util.Date;
 @Entity
 @Table(name = "LOG")
 public class Log  implements Serializable {
+	public
+	Log(Users users, String loginfo, Date logtime) {
+		this.users = users;
+		this.loginfo = loginfo;
+		this.logtime = logtime;
+	}
+
+	public
+	Log() {
+	}
+
 	/**
 	 * 日志id
 	 */

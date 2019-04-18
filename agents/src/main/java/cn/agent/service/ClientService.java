@@ -24,7 +24,7 @@ interface ClientService {
      * @param client  客户信息
      * @return 是否添加成功
      */
-    boolean insert(Client client);
+    Client insert(Client client);
 
     /**
      * 根据条件获取满足条件的客户信息

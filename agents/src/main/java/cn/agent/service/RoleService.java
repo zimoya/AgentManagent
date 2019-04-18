@@ -15,7 +15,7 @@ interface RoleService {
      * @param role 条件
      * @return 是否修改成功
      */
-    boolean update(Role role);
+    Role update(Role role);
 
     /**
      * 添加角色
@@ -23,7 +23,7 @@ interface RoleService {
      * @param role 条件
      * @return 是否添加成功
      */
-    boolean insert(Role role);
+    Role insert(Role role);
 
     /**
      * 根据条件获取满足条件的角色

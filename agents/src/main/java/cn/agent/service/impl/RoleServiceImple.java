@@ -1,7 +1,9 @@
 package cn.agent.service.impl;
 
+import cn.agent.dao.RoleDao;
 import cn.agent.pojo.Role;
 import cn.agent.service.RoleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -11,17 +13,19 @@ import java.util.List;
 public
 class RoleServiceImple implements RoleService {
 
-
+    @Autowired
+    private
+    RoleDao roleDao;
     @Override
     public
-    boolean update(Role role) {
-        return false;
+    Role update(Role role) {
+        return roleDao.saveAndFlush( role );
     }
 
     @Override
     public
-    boolean insert(Role role) {
-        return false;
+    Role insert(Role role) {
+        return roleDao.saveAndFlush( role );
     }
 
     @Override
@@ -51,6 +55,7 @@ class RoleServiceImple implements RoleService {
     @Override
     public
     boolean delete(Role role) {
-        return false;
+         roleDao.delete( role );
+        return roleDao.existsById( role.getRoleid() );
     }
 }
