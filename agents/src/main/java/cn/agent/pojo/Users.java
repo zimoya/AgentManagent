@@ -1,6 +1,5 @@
 package cn.agent.pojo;
 
-import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -69,9 +68,9 @@ public class Users  implements Serializable {
 
 	/**
 	 * 财务明细
-	 */
+	 *//*
 	@OneToMany(mappedBy = "users",cascade = CascadeType.MERGE)
-	private Set<Finance> finances=new HashSet<Finance>();
+	private Set<Finance> finances=new HashSet<Finance>();*/
 	/**
 	 * 日志
 	 */
@@ -168,13 +167,13 @@ public class Users  implements Serializable {
 		this.lastlogintime = lastlogintime;
 	}
 
-	public Set<Finance> getFinances() {
+	/*public Set<Finance> getFinances() {
 		return finances;
 	}
 
 	public void setFinances(Set<Finance> finances) {
 		this.finances = finances;
-	}
+	}*/
 
 	public Set<Log> getLogs() {
 		return logs;

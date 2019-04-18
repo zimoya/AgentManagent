@@ -1,6 +1,5 @@
 package cn.agent.pojo;
 
-import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -22,14 +21,11 @@ public class Finance  implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long finaid;  //财务明细编号
 
-	/*@Column(name = "USERID")
-	private Long userid;  //用户编号*/
 	/**
-	 * 用户
+	 * 用户编号
 	 */
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="USERID")
-	private Users users;
+	@Column(name = "USERID")
+	private Long userid;  //用户编号
 
 	/*@Column(name = "FINATYPE")
 	private String finatype; //财务类型*/
@@ -68,13 +64,13 @@ public class Finance  implements Serializable {
 		this.finaid = finaid;
 	}
 
-	/*public Long getUserid() {
+	public Long getUserid() {
 		return userid;
 	}
 
 	public void setUserid(Long userid) {
 		this.userid = userid;
-	}*/
+	}
 
 	/*public String getFinatype() {
 		return finatype;
@@ -116,13 +112,13 @@ public class Finance  implements Serializable {
 		this.createtime = createtime;
 	}
 
-	public Users getUsers() {
+	/*public Users getUsers() {
 		return users;
 	}
 
 	public void setUsers(Users users) {
 		this.users = users;
-	}
+	}*/
 
 	public Types getTypes() {
 		return types;

@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
 <html>
   <head>
     <title>代理商客户管理</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <script src="resource/scripts/jquery-1.4.2.js"></script>
+    <script th:src="@{/resource/scripts/jquery-1.4.2.js}"></script>
     <style>
         #div_table table{position: absolute;width:960px;}
         #div_table table tr:nth-of-type(1){background:linear-gradient(to top,gray,#FFFFFF);}
@@ -27,12 +28,12 @@
   </head>
   <body>
   <div id="div0">
-    客户名称:<input/><img src="images/u9.png" id="img"/>
+    客户名称:<input/><img th:src="@{/images/u9.png}" id="img"/>
   </div>
   <div >
     <!---添加客户-->
-    <a href="add_The_Customer.html">
-      <img src="images/u15.png" id="imgs"/>
+    <a href="/agent/page/add_The_Customer.do">
+      <img th:src="@{/images/u15.png}" id="imgs"/>
      </a>
   </div>
     <div id="div_table">
@@ -55,9 +56,9 @@
           <td class="stop">停用</td>
           <td>
             <div>
-            <div> <a href="add_The_Customer.html">查看</a></div>
+            <div> <a href="/agent/page/add_The_Customer.do">查看</a></div>
 
-            <div> <a href="add_The_Customer.html">修改</a></div>
+            <div> <a href="/agent/page/add_The_Customer.do">修改</a></div>
 
             <div> <a href="javaScript:void(0)" class=" state start">启用</a></div>
             </div>
@@ -72,7 +73,7 @@
           <td class="stop">停用</td>
           <td>
             <div>
-              <div> <a href="../2.代理商管理系统/A7Y2PROJECT0002_attachment/ACCP7.0_代理商管理系统_原型/原型/代理商系统原型HTML/新增客户.html">查看</a></div>
+              <div> <a href="">查看</a></div>
 
               <div> <a href="新增客户.新增客户">修改</a></div>
 
@@ -89,11 +90,11 @@
           <td>启用</td>
           <td>
             <div>
-              <div> <a href="#">查看</a></div>
+              <div> <a href="">查看</a></div>
 
-              <div> <a href="#">修改</a></div>
+              <div> <a href="">修改</a></div>
 
-              <div> <a href="#" class="stop">停用</a></div>
+              <div> <a href="" class="stop">停用</a></div>
             </div>
           </td>
         </tr> <tr>
@@ -105,11 +106,11 @@
         <td class="stop">启用</td>
         <td>
           <div>
-            <div> <a href="#">查看</a></div>
+            <div> <a href="">查看</a></div>
 
-            <div> <a href="#">修改</a></div>
+            <div> <a href="">修改</a></div>
 
-            <div> <a href="#" class="stop">停用</a></div>
+            <div> <a href="" class="stop">停用</a></div>
           </div>
         </td>
       </tr>

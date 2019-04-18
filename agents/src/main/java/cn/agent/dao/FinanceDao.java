@@ -2,8 +2,13 @@ package cn.agent.dao;
 
 import cn.agent.pojo.Appaddress;
 import cn.agent.pojo.Finance;
+import cn.agent.pojo.Users;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.RepositoryDefinition;
+
+import java.util.Date;
 
 
 /**
@@ -13,4 +18,33 @@ import org.springframework.data.repository.RepositoryDefinition;
 @RepositoryDefinition(domainClass= Finance.class,idClass=Long.class)
 public
 interface FinanceDao extends JpaRepository<Finance,Long> {
+    /**
+     * 根据条件查询，分页查
+     * @param createtime 最小时间
+     * @param createtime2 最大时间
+     * @param pageable
+     * @return
+     */
+    Page<Finance> queryFinanceByCreatetimeBetweenAndUserid(Date createtime, Date createtime2, Long userid, Pageable pageable);
+
+       
+    /**
+     * 根据用户id查询财务明细分页查
+     * @param userid
+     * @param pageable
+     * @return
+     */
+    Page<Finance> queryFinanceByUserid(Long userid, Pageable pageable);
+
+    /**
+     *根据条件查询总记录数
+     * @param createtime 最小时间
+     * @param createtime2 最大时间
+     * @return
+     */
+    Long countFinanceByCreatetimeBetweenAndUserid(Date createtime, Date createtime2, Long userid);
+
+
+
+
 }

@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
 <html>
   <head>
     <title>关键词审核</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <script src="resource/scripts/jquery-1.4.2.js"></script>
+    <script th:src="@{/resource/scripts/jquery-1.4.2.js}"></script>
     <style>
 
       #div_table table{position: absolute;width:960px;}
@@ -31,7 +32,7 @@
     <div id="div">
       <div><h5>关键词审核</h5></div>
       <div id="divs">
-        <div>  关键词:<input type="text"/><img src="images/u9.png"/>审核 流程:已申请(<代理申请>)>>审核中>>通过>>续费 |审核 流程:已申请(<代理申请>)>>审核中>>不通过</div>
+        <div>  关键词:<input type="text"/><img th:src="@{/images/u9.png}"/>审核 流程:已申请(<代理申请>)>>审核中>>通过>>续费 |审核 流程:已申请(<代理申请>)>>审核中>>不通过</div>
       </div>
     </div>
 

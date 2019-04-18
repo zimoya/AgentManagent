@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
+ <html xmlns:th="https://www.thymeleaf.org">
 <html>
   <head>
     <title>用户管理</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <script src="resource/scripts/jquery-1.4.2.js"></script>
+    <script th:src="@{/resource/scripts/jquery-1.4.2.js}"></script>
     <style>
         body {margin:0px;background-image:none;position:static;left:auto;width:auto;margin-left:0;margin-right:0;text-align:left;}
         #u0 {position:absolute;left:46px;top:35px;width:990px;height:737px;}
@@ -72,17 +73,16 @@
       <span>欢迎你:<span>名称</span></span>
       <a href="javascript:" id="up">修改密码</a>
       <a href="#">退出</a>
-      <div id="div_from">
-          <form>
-              请输入原密码:<input>
-              请输入新密码:<input>
-              请确认新密码:<input>
-              <input type="submit" value="提交">
-              <input type="button"  id="rest" value="取消">
-          </form>
-      </div>
   </div>
-
+  <div id="div_from">
+      <form>
+          请输入原密码:<input type="text" name="oldpassword">
+          请输入新密码:<input type="password" name="newpassword">
+          请确认新密码:<input type="password" name="comnepwd">
+          <input type="button" value="提交">
+          <input type="button"  id="rest" value="取消">
+      </form>
+  </div>
   <div id="head">
       <ul id="mainUl">
           <li qiangerzi="ul1">代理商管理</li>
@@ -105,7 +105,7 @@
           <li  id="report_Management">报表管理</li>
       </ul>
       <ul class="ul4">
-          <li id=" financial_Management">财务管理</li>
+          <li id="financial_Management">财务管理</li>
           <li id="role_Management">角色管理</li>
           <li id="role_Authority_Management">角色权限管理</li>
           <li id="user_Management">用户管理</li>
@@ -125,19 +125,20 @@
 
 
   <div id="u0" class="ax_图片">
-      <img id="u0_img" class="img " src="images/background.png"/>
+      <img id="u0_img" class="img " th:src="@{/images/background.png}"/>
       <div id="u1" class="text"></div>
   </div>
-  <iframe src="agent_Manage.html" id="iframe">
+  <div id="div_iframe">
+  <iframe th:src="@{/agent_Manage.html}" id="iframe">
 
   </iframe>
-    </div>
+  </div>
     <script>
         $(function () {
             $("#mainUl li").eq(0).attr("class","active");
             var test= $("#mainUl li").eq(0).html();
             $("#test").html(test+"\\查看账户信息");
-            $("#frame")
+
         });
         $("#mainUl li").click(function () {
             $(this).siblings().removeAttr("class");
@@ -154,32 +155,8 @@
             $("input[type=text]").val("");
             $("#div_from ").hide();
         });
-        $(".ul1 li").click(function () {
-            $("#test").html("代理商管理\\"+$(this).html());
-            id=$(this).attr("id");
-          $("#iframe").attr("src",id+".html");
-        });
-        $(".ul2 li").click(function () {
-            $("#test").html("门户管理\\"+$(this).html());
-            id=$(this).attr("id");
-            $("#iframe").attr("src",id+".html");
-        });
-        $(".ul3 li").click(function () {
-            $("#test").html("报表管理\\"+$(this).html());
-            id=$(this).attr("id");
-            $("#iframe").attr("src",id+".html");
-        });
-        $(".ul4 li").click(function () {
-            $("#test").html("系统管理\\"+$(this).html());
-            id=$(this).attr("id");
-            $("#iframe").attr("src",id+".html");
-        });
-        $(".ul5 li").click(function () {
-            $("#test").html("系统配置管理\\"+$(this).html());
-            id=$(this).attr("id");
-            $("#iframe").attr("src",id+".html");
-        });
-    </script>
 
+    </script>
+  <script th:src="@{/resource/scripts/js/agentManage.js}"></script>
   </body>
 </html>
