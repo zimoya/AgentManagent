@@ -36,12 +36,13 @@ function init(createTime1,createTime2,pageSum){
             $("div_table .div").remove();
             //页数操作
             if(data.totalPages>1){
+                var pages=data.totalPages;
                 alert("sss");
                 $("#div_table .div ").append("<div><span  name='0'>首页</span></div>");
-                for (var i=0;0<data.totalPages;i++){
-                    $("#div_table .div div").append("<span name='"+i+"'>(i+1))</span>");
+                for (var i=0;i<pages;i++){
+                    $("#div_table .div div").append("<span name='"+i+"'>"+(i+1)+"</span>");
                 }
-                $("#div_table .div div").append("<span  name='"+(data.totalPages-1)+"'>首页</span>");
+                $("#div_table .div div").append("<span  name='"+(pages-1)+"'>尾页</span>");
             }
         },
         error:function(data){
@@ -50,6 +51,10 @@ function init(createTime1,createTime2,pageSum){
     });
 
 }
+/*页码代点击事件*/
+$("#div_table .div").on("click", "div span",function () {
+    
+})
 //把字符串日期转为日期
 function ConvertStrToDate(datetimeStr) {
     var mydateint = Date.parse(datetimeStr);//数值格式的时间
