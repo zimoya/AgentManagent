@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
 <html>
   <head>
     <title>用户管理</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <script src="resource/scripts/jquery-1.4.2.js"></script>
+    <script th:src="@{/resource/scripts/jquery-1.4.2.js}"></script>
     <style>
       body {margin:0px;background-image:none;position:static;left:auto;width:auto;margin-left:0;margin-right:0;text-align:left;}
       #u0 {position:absolute;left:46px;top:35px;width:990px;height:737px;}
@@ -74,7 +75,7 @@
       <div id="selected-head">
 
         <div class="left" id="div_insert">
-          <img id="u7_img" class="img " src="images/u8.png"/>
+          <img id="u7_img" class="img " th:src="@{/images/u8.png}"/>
 
           <div id="u8" class="text"></div>
         </div>
@@ -109,7 +110,7 @@
               <option value="未启用">未启用</option>
             </select>
           </div>
-          <div><img id="selectedSubmit" class="img " src="images/u9.png"/></div>
+          <div><img id="selectedSubmit" class="img " th:src="@{/images/u9.png}"/></div>
 
 
 
@@ -199,7 +200,7 @@
                     </div>
                         <div class="head active">
                             <p>操作时间:<input type="text"/></p>
-                            <p><img src="images/u9.png"></p>
+                            <p><img th:src="@{/images/u9.png}"></p>
                         </div>
                     <table border="1px solid #000">
                         <thead>

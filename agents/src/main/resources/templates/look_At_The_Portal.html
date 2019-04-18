@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
 <html>
   <head>
     <title>查看门户</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <script src="resource/scripts/jquery-1.4.2.js"></script>
+    <script th:src="@{/resource/scripts/jquery-1.4.2.js}"></script>
 
     <style>
 
@@ -46,18 +47,18 @@
 
     <!-- Unnamed (图片) -->
     <div id="u2" class="ax_图片">
-      <img id="u2_img" class="img " src="images/u12.png"/>
+      <img id="u2_img" class="img " th:src="@{/images/u12.png}"/>
       <!-- Unnamed () -->
       <div id="u3" class="text"></div>
     </div>
     <!-- Unnamed (图片) -->
     <div id="u0" class="ax_图片">
-      <img id="u0_img" class="img " src="images/u0.png"/>
+      <img id="u0_img" class="img " th:src="@{/images/u0.png}"/>
       <!-- Unnamed () -->
       <div id="u1" class="text"></div>
     </div>
     <div id="u4">
-      <img id="u3_img" class="img " src="images/u13.png"/>
+      <img id="u3_img" class="img " th:src="@{/images/u13.png}"/>
     </div>
 
     <p>登录账号</p>

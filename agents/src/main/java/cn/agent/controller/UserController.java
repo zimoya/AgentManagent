@@ -1,11 +1,15 @@
 package cn.agent.controller;
 
+import cn.agent.pojo.Finance;
+import cn.agent.pojo.Log;
 import cn.agent.pojo.Users;
+import cn.agent.service.FinanceService;
+import cn.agent.service.LogService;
 import cn.agent.service.UsersService;
 import com.alibaba.fastjson.JSON;
 import org.apache.log4j.Logger;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 /**
  * 用户
@@ -23,6 +28,10 @@ public class UserController {
     //创建service层对象
     @Autowired
     private UsersService usersService;
+    @Autowired
+    private FinanceService financeService;
+    @Autowired
+    private LogService logService;
     //创建log4j
     private Logger logger=Logger.getLogger(UserController.class);
 
@@ -32,7 +41,7 @@ public class UserController {
      */
     @RequestMapping(value = "/login")
     public String Login(){
-        return "";
+        return "login";
     }
 
     /**
@@ -46,20 +55,26 @@ public class UserController {
         logger.debug("===========================password"+password);
         //调用service层方法，根据用户名查询
         Users users=usersService.findUsersByUsername(username);
-        String falg;
+        String falg=null;
         if(users!=null){ //如果返回的对象不为空，则判断密码是否正确
             if(password==users.getPassword()||password.equals(users.getPassword())){ //如果密码正确，则将用户信息保存到session
                     session.setAttribute("user",users);
                     Users user=(Users) session.getAttribute("user");
-                    System.out.println(user.getUsername());
                     falg="success";
+                    //进行日志记录
+                    Log log=new Log();
+                    log.setUsers(user);
+                    log.setLoginfo("用户进行登录，操作成功");
+                    log.setLogtime(new Date());
+                    logService.insertLog(log);
+                System.out.println(logService.insertLog(log));
             }else{
                 falg="error";
             }
         }else{ //如果返回对象为空，则用户名不正确
             falg="failed";
         }
-            return JSON.toJSONString(falg);
+            return falg;
     }
 
     /**
@@ -95,6 +110,24 @@ public class UserController {
         }else{
             return JSON.toJSONString("false");
         }
+    }
 
+    /**
+     * 查询账户明细
+     * @param createTime1
+     * @param createTime2
+     * @param pageSum
+     * @return
+     */
+    @RequestMapping
+    @ResponseBody
+    public Page<Finance> getUsersDetail(@Param("createTime1")Date createTime1,@Param("createTime2") Date createTime2,@Param("pageSum") int pageSum,HttpSession session){
+        System.out.println("===================================createTime1="+createTime1);
+        System.out.println("===================================createTime2="+createTime2);
+        System.out.println("========================================pageSum="+pageSum);
+        Long userid=((Users)session.getAttribute("user")).getUserid();
+        int pageSize=5;
+        Page<Finance> finances=financeService.queryFinanceByCreatetimeBetween(createTime1,createTime2,userid,pageSum,pageSize);
+        return finances;
     }
 }

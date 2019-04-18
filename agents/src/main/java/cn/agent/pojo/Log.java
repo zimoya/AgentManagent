@@ -2,6 +2,8 @@ package cn.agent.pojo;
 
 
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -27,7 +29,8 @@ public class Log  implements Serializable {
 	 * 日志id
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "sql_Log")
+	@SequenceGenerator(name = "sql_Log",sequenceName ="seqLog")
 	private Long logid;
 /*	*//**
 	 * 用户id
@@ -47,7 +50,7 @@ public class Log  implements Serializable {
 	@Column(name = "LOGINFO")
 	private String loginfo;
 	/**
-	 * 操作信息
+	 * 操作时间
 	 */
 	@Column(name = "LOGTIME")
 	private Date logtime;
@@ -93,3 +96,4 @@ public class Log  implements Serializable {
 	}
 
 }
+

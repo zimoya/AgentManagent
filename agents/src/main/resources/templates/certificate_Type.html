@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
 <html>
   <head>
     <title>证件类型</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <script src="resource/scripts/jquery-1.4.2.js"></script>
+    <script th:src="@{/resource/scripts/jquery-1.4.2.js}"></script>
     <style>
 
       #div_table table{position: absolute;width:960px;}
@@ -32,7 +33,7 @@
   <body>
 
   <div  id="div_insert">
-    <img src="images/u5.png">
+    <img th:src="@{/images/u5.png}">
     <div id="insert">
       <div><strong>您正在进行添加操作</strong></div>
       <div>类型名称:<input type="text"></div>

@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
 <html>
   <head>
     <title>新增客户</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <script src="resource/scripts/jquery-1.4.2.js"></script>
+    <script th:src="@{/resource/scripts/jquery-1.4.2.js}"></script>
     <style>
       a {text-decoration: none;color: black;}
 
@@ -36,7 +37,7 @@
 
 
     <div id="u2" >
-      <img id="u2_img" class="img " src="images/u16.png"/>
+      <img id="u2_img" class="img " th:src="@{/images/u16.png}"/>
       <!-- Unnamed () -->
       <div id="u3" class="text"></div>
     </div>
@@ -87,8 +88,8 @@
     <input type="text" name="公司地址" value="公司地址"/>
     <input type="text" name="日期" value="注册日期">
     <textarea id="" cols="10" rows="3">备注</textarea>
-    <img src="images/u13.png" id="u13"/>
-    <img src="images/u14.png" id="u14"/>
+    <img th:src="@{/images/u13.png}" id="u13"/>
+    <img th:src="@{/images/u14.png}" id="u14"/>
     <div id="add">
       <button id="button">联系人</button>
       <div id="div_context">
