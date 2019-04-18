@@ -50,8 +50,8 @@ public class Types  implements Serializable {
 	/**
 	 * 财务明细
 	 */
-	@OneToMany( mappedBy = "types",cascade = CascadeType.MERGE)
-	private Set<Finance> finances=new HashSet<Finance>();
+/*	@OneToMany( mappedBy = "types",cascade = CascadeType.MERGE)
+	private Set<Finance> finances=new HashSet<Finance>();*/
 	/**
 	 * 客户
 	 */
@@ -123,14 +123,14 @@ public class Types  implements Serializable {
 		this.exist = exist;
 	}
 
-	public Set<Finance> getFinances() {
+	/*public Set<Finance> getFinances() {
 		return finances;
 	}
 
 	public void setFinances(Set<Finance> finances) {
 		this.finances = finances;
 	}
-
+*/
 	public Set<Client> getClients() {
 		return clients;
 	}

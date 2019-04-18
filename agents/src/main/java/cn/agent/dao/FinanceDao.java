@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.RepositoryDefinition;
 
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -43,8 +44,5 @@ interface FinanceDao extends JpaRepository<Finance,Long> {
      * @return
      */
     Long countFinanceByCreatetimeBetweenAndUserid(Date createtime, Date createtime2, Long userid);
-
-
-
 
 }

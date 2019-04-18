@@ -27,14 +27,14 @@ public class Finance  implements Serializable {
 	@Column(name = "USERID")
 	private Long userid;  //用户编号
 
-	/*@Column(name = "FINATYPE")
-	private String finatype; //财务类型*/
+	@Column(name = "FINATYPE")
+	private long finatype; //财务类型
 	/**
 	 * 财务类型
 	 */
-	@ManyToOne(fetch =FetchType.LAZY)
-	@JoinColumn(name="TYPEID")
-	private Types types;
+	/*@ManyToOne(fetch =FetchType.LAZY)
+	@JoinColumn(name="FINATYPE")
+	private Types types;*/
 	/**
 	 * 账户余额
 	 */
@@ -71,14 +71,6 @@ public class Finance  implements Serializable {
 	public void setUserid(Long userid) {
 		this.userid = userid;
 	}
-
-	/*public String getFinatype() {
-		return finatype;
-	}
-
-	public void setFinatype(String finatype) {
-		this.finatype = finatype;
-	}*/
 
 	public Double getBalance() {
 		return balance;
@@ -120,11 +112,19 @@ public class Finance  implements Serializable {
 		this.users = users;
 	}*/
 
-	public Types getTypes() {
+	/*public Types getTypes() {
 		return types;
 	}
 
 	public void setTypes(Types types) {
 		this.types = types;
+	}*/
+
+	public long getFinatype() {
+		return finatype;
+	}
+
+	public void setFinatype(long finatype) {
+		this.finatype = finatype;
 	}
 }
