@@ -77,10 +77,10 @@
   </div>
   <div id="div_from">
       <form>
-         <div>请输入原密码:<input type="text" name="oldpassword"></div>
-          <div> 请输入新密码:<input type="password" name="newpassword"></div>
-          <div>  请确认新密码:<input type="password" name="comnepwd"></div>
-          <div> <input type="button" value="提交">
+         <div>请输入原密码:<input type="text" name="oldpassword" id="oldpassword"></div>
+          <div> 请输入新密码:<input type="password" name="newpassword" id="newpassword"></div>
+          <div>  请确认新密码:<input type="password" name="comnepwd" id="comnepwd"></div>
+          <div> <input type="button" id="save" value="提交">
           <input type="button"  id="rest" value="取消"></div>
       </form>
   </div>
@@ -130,7 +130,7 @@
       <div id="u1" class="text"></div>
   </div>
   <div id="div_iframe">
-  <iframe th:src="@{/agent_Manage.html}" id="iframe">
+  <iframe id="iframe" src="/agent/page/agent_Manage.do">
 
   </iframe>
   </div>

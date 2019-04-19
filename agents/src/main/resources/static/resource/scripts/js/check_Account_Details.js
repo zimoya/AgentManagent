@@ -1,6 +1,6 @@
 /*查看账户明细功能js*/
 $(function () {
-    init('2013/10/23 ','',0);
+    init("",'2013/10/23 ','',0);
     /**
      * 页码点击事件
      */
@@ -9,7 +9,7 @@ $(function () {
         $(this).siblings().css("background","");
     })
 })
-function init(createTime1,createTime2,pageSum){
+function init(finatype,createTime1,createTime2,pageSum){
     //调用ConvertStrToDate方法将字符串转日期
    var  createTime3=ConvertStrToDate(createTime1);
    var  createTime4=ConvertStrToDate(createTime2);
@@ -18,7 +18,7 @@ function init(createTime1,createTime2,pageSum){
     $.ajax({
         type:"GET",
         url:"/agent/user/UsersDetail",
-        data:{createTime1:createTime3,createTime2:createTime4,pageSum:pageSum},
+        data:{finatype:"",createTime1:createTime3,createTime2:createTime4,pageSum:pageSum},
         dataType:"json",
         success:function(data){
 

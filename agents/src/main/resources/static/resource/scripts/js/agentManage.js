@@ -1,4 +1,5 @@
 $(function () {
+
     $("#keyword_Application").click(function () {
         $("#iframe").attr("src","/agent/page/keyword_Application.do");
     });

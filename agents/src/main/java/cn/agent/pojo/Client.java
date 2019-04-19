@@ -54,12 +54,6 @@ public class Client  implements Serializable {
 	@Column(name = "STATUS")
 	private Long status;
 
-	/**
-	 * 联系人
-	 */
-	@OneToMany(mappedBy = "client",cascade = CascadeType.MERGE)
-	private Set<Linkman> linkmen=new HashSet<Linkman>();
-
 	public Long getClientid() {
 		return clientid;
 	}
@@ -108,12 +102,5 @@ public class Client  implements Serializable {
 		this.status = status;
 	}
 
-	public Set<Linkman> getLinkmen() {
-		return linkmen;
-	}
-
-	public void setLinkmen(Set<Linkman> linkmen) {
-		this.linkmen = linkmen;
-	}
 
 }

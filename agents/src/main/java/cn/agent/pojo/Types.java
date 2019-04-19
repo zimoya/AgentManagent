@@ -47,26 +47,7 @@ public class Types  implements Serializable {
 	 */
 	@Column(name = "EXIST")
 	private Long exist;
-	/**
-	 * 财务明细
-	 */
-/*	@OneToMany( mappedBy = "types",cascade = CascadeType.MERGE)
-	private Set<Finance> finances=new HashSet<Finance>();*/
-	/**
-	 * 客户
-	 */
-	@OneToMany(mappedBy = "types",cascade = CascadeType.MERGE)
-	private Set<Client> clients=new HashSet<Client>();
-	/**
-	 * 门户
-	 */
-	@OneToMany(mappedBy = "types",cascade = CascadeType.MERGE)
-	private  Set<Portal> portals=new HashSet<Portal>();
-	/**
-	 * 关键字
-	 */
-	@OneToMany(mappedBy = "types",cascade = CascadeType.MERGE)
-	private Set<Keyword> keywords=new HashSet<Keyword>();
+
 	public Long getTypeid() {
 		return typeid;
 	}
@@ -123,35 +104,4 @@ public class Types  implements Serializable {
 		this.exist = exist;
 	}
 
-	/*public Set<Finance> getFinances() {
-		return finances;
-	}
-
-	public void setFinances(Set<Finance> finances) {
-		this.finances = finances;
-	}
-*/
-	public Set<Client> getClients() {
-		return clients;
-	}
-
-	public void setClients(Set<Client> clients) {
-		this.clients = clients;
-	}
-
-	public Set<Portal> getPortals() {
-		return portals;
-	}
-
-	public void setPortals(Set<Portal> portals) {
-		this.portals = portals;
-	}
-
-	public Set<Keyword> getKeywords() {
-		return keywords;
-	}
-
-	public void setKeywords(Set<Keyword> keywords) {
-		this.keywords = keywords;
-	}
 }

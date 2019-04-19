@@ -6,7 +6,7 @@ import cn.agent.pojo.Types;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.RepositoryDefinition;
 
-
+import java.util.List;
 
 
 /**
@@ -16,4 +16,11 @@ import org.springframework.data.repository.RepositoryDefinition;
 @RepositoryDefinition(domainClass= Types.class,idClass=Long.class)
 public
 interface TypesDao extends JpaRepository<Types,Long> {
+
+    /**
+     * 根据父类id查询类型信息
+     * @param parentid
+     * @return
+     */
+    public List<Types> findTypesByParentid(Long parentid);
 }

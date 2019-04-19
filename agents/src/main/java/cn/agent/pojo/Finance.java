@@ -4,9 +4,6 @@ package cn.agent.pojo;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-
 
 /**
  * 财务明细
@@ -28,18 +25,29 @@ public class Finance  implements Serializable {
 	private Long userid;  //用户编号
 
 	@Column(name = "FINATYPE")
-	private long finatype; //财务类型
+	private  Long finatype;
+
+
 	/**
 	 * 财务类型
 	 */
-	/*@ManyToOne(fetch =FetchType.LAZY)
-	@JoinColumn(name="FINATYPE")
+/*	@ManyToOne(fetch =FetchType.LAZY)
+	@JoinColumn(name="TYPEID")
 	private Types types;*/
 	/**
 	 * 账户余额
 	 */
 	@Column(name = "BALANCE")
 	private Double balance;
+
+	/*public Types getTypes() {
+		return types;
+	}
+
+	public void setTypes(Types types) {
+		this.types = types;
+	}*/
+
 	/**
 	 * 操作资金
 	 */
@@ -104,27 +112,11 @@ public class Finance  implements Serializable {
 		this.createtime = createtime;
 	}
 
-	/*public Users getUsers() {
-		return users;
-	}
-
-	public void setUsers(Users users) {
-		this.users = users;
-	}*/
-
-	/*public Types getTypes() {
-		return types;
-	}
-
-	public void setTypes(Types types) {
-		this.types = types;
-	}*/
-
-	public long getFinatype() {
+	public Long getFinatype() {
 		return finatype;
 	}
 
-	public void setFinatype(long finatype) {
+	public void setFinatype(Long finatype) {
 		this.finatype = finatype;
 	}
 }

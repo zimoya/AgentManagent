@@ -225,4 +225,13 @@ public class PageChange {
     public String check_Account_Details(){
         return "check_Account_Details";
     }
+
+    /**
+     * 进入账户信息页面
+     * @return
+     */
+    @RequestMapping(value="/agent_Manage.do")
+    public String agent_Manage(){
+        return "agent_Manage";
+    }
 }

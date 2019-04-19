@@ -1,6 +1,8 @@
 package cn.agent.pojo;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -12,6 +14,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "USERS")
+@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "role" })
 public class Users  implements Serializable {
 	/**
 	 * 用户编号
@@ -66,26 +69,6 @@ public class Users  implements Serializable {
 	@JoinColumn(name="ROLEID")
 	private Role role;
 
-	/**
-	 * 财务明细
-	 *//*
-	@OneToMany(mappedBy = "users",cascade = CascadeType.MERGE)
-	private Set<Finance> finances=new HashSet<Finance>();*/
-	/**
-	 * 日志
-	 */
-	@OneToMany(mappedBy = "users",cascade = CascadeType.MERGE)
-	private Set<Log> logs=new HashSet<Log>();
-	/**
-	 * 客户
-	 */
-	@OneToMany(mappedBy = "users",cascade = CascadeType.MERGE)
-	private Set<Client> clients=new HashSet<Client>();
-	/**
-	 * 关键字
-	 */
-	@OneToMany(mappedBy = "users",cascade = CascadeType.MERGE)
-	private Set<Keyword> keywords=new HashSet<Keyword>();
 
 	public Long getUserid() {
 		return userid;
@@ -167,35 +150,4 @@ public class Users  implements Serializable {
 		this.lastlogintime = lastlogintime;
 	}
 
-	/*public Set<Finance> getFinances() {
-		return finances;
-	}
-
-	public void setFinances(Set<Finance> finances) {
-		this.finances = finances;
-	}*/
-
-	public Set<Log> getLogs() {
-		return logs;
-	}
-
-	public void setLogs(Set<Log> logs) {
-		this.logs = logs;
-	}
-
-	public Set<Client> getClients() {
-		return clients;
-	}
-
-	public void setClients(Set<Client> clients) {
-		this.clients = clients;
-	}
-
-	public Set<Keyword> getKeywords() {
-		return keywords;
-	}
-
-	public void setKeywords(Set<Keyword> keywords) {
-		this.keywords = keywords;
-	}
 }
