@@ -128,9 +128,9 @@ public class UserController {
         System.out.println("========================================pageSum="+pageSum);
         System.out.println("==========================================finatype"+finatype);
         Long userid=((Users)session.getAttribute("user")).getUserid();
-        int pageSize=1;
+        int pageSize=5;
         Page<Finance> finances=financeService.queryFinanceByCreatetimeBetween(createTime1,createTime2,userid,finatype,pageSum,pageSize);
-        System.out.println(JSON.toJSONString(finances,true));
+       /* System.out.println(JSON.toJSONString(finances,true));*/
         return finances;
     }
 

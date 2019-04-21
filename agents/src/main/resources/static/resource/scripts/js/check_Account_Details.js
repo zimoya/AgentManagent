@@ -7,8 +7,15 @@ $(function () {
     $(".div div span ").click(function () {
         $(this).css("background","ghostwhite");
         $(this).siblings().css("background","");
-    })
-})
+    });
+
+    /*页码代点击事件*/
+    $("#div_table .div").on("click","div span",function(){
+        var page=$(this).attr("names");
+        alert(page);
+        init('','','',page);
+    });
+});
 function init(finatype,createTime1,createTime2,pageSum){
     //调用ConvertStrToDate方法将字符串转日期
    var  createTime3=ConvertStrToDate(createTime1);
@@ -33,16 +40,15 @@ function init(finatype,createTime1,createTime2,pageSum){
                     "<td>"+e.description+"</td>" +
                     "<td>"+e.createtime+"</td></tr>");
             });
-            $("div_table .div").remove();
+            $("#div_table .div").html("");
             //页数操作
             if(data.totalPages>1){
                 var pages=data.totalPages;
-                alert("sss");
-                $("#div_table .div ").append("<div><span  name='0'>首页</span></div>");
+                $("#div_table .div ").append("<div><span  names='0'>首页</span></div>");
                 for (var i=0;i<pages;i++){
-                    $("#div_table .div div").append("<span name='"+i+"'>"+(i+1)+"</span>");
+                    $("#div_table .div div").append("<span  names='"+i+"'>"+(i+1)+"</span>");
                 }
-                $("#div_table .div div").append("<span  name='"+(pages-1)+"'>尾页</span>");
+                $("#div_table .div div").append("<span   names='"+(pages-1)+"'>尾页</span>");
             }
         },
         error:function(data){
@@ -51,10 +57,8 @@ function init(finatype,createTime1,createTime2,pageSum){
     });
 
 }
-/*页码代点击事件*/
-$("#div_table .div").on("click", "div span",function () {
-    
-})
+
+
 //把字符串日期转为日期
 function ConvertStrToDate(datetimeStr) {
     var mydateint = Date.parse(datetimeStr);//数值格式的时间

@@ -6,6 +6,8 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <script th:src="@{/resource/scripts/jquery-1.4.2.js}"></script>
+    <script th:src="@{/resource/scripts/jquery-1.7.1.min.js}"></script>
+    <script th:src="@{/resource/scripts/js/financial_Types.js}"></script>
     <style>
       #div_table table{position: absolute;width:960px;}
       #div_table table tr:nth-of-type(1){background:linear-gradient(to top,gray,#FFFFFF);}
@@ -65,17 +67,7 @@
           <td>是否启用</td>
           <td colspan="2">操作</td>
         </tr>
-        <tr>
-          <td>1</td>
-          <td>配置类型</td>
-          <td>启用</td>
-          <td>
-            <div>
-              <div><a href="javascript:void(0)" class="up" name="配置类型" id="id">修改</a></div>
-              <div><a href="javascript:void(0)" >删除</a> </div>
-            </div>
-          </td>
-        </tr>
+
       </table>
       <div class="div">
         <div>
@@ -87,28 +79,6 @@
         </div>
       </div>
     </div>
-    <script>
-        $(function () {
-            $(".div div span ").click(function () {
-                $(this).css("background","ghostwhite");
-                $(this).siblings().css("background","");
-            })
-        })
-      $("#div_insert img").click(function () {
-          $("#insert").show();
-      })
-      $(".esc").click(function () {
-          $("input[type=text]").val("");
-          $("#insert").hide();
-          $("#update").hide();
-      })
-      $(".up").click(function () {
-         var name=$(this).attr("name");
-          var id=$(this).attr("id");
-          $("#update input[type=text]").val(name);
-          $(".upSub").attr("id",id);
-          $("#update").show();
-      });
-    </script>
+
   </body>
 </html>

@@ -2,6 +2,7 @@ package cn.agent.controller;
 
 import cn.agent.pojo.Types;
 import cn.agent.service.TypesService;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -30,6 +31,7 @@ public class FinanceController {
     @ResponseBody
     public List<Types> findTypes(@Param("typeParentId") Long typeParentId){
         List<Types> list=typesService.findTypesByParentid(typeParentId);
+      /*  System.out.println(JSON.toJSONString(list,true));*/
         return list;
     }
 }
