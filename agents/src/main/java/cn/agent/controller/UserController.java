@@ -126,6 +126,7 @@ public class UserController {
         System.out.println("===================================createTime1="+createTime1);
         System.out.println("===================================createTime2="+createTime2);
         System.out.println("========================================pageSum="+pageSum);
+        System.out.println("==========================================finatype"+finatype);
         Long userid=((Users)session.getAttribute("user")).getUserid();
         int pageSize=1;
         Page<Finance> finances=financeService.queryFinanceByCreatetimeBetween(createTime1,createTime2,userid,finatype,pageSum,pageSize);
