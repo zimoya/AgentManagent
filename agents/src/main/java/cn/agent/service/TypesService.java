@@ -64,4 +64,10 @@ interface TypesService {
     boolean delete(Types types);
 
 
+    /**
+     * 根据父类id查询类型信息
+     * @param parentid
+     * @return
+     */
+    public List<Types> findTypesByParentid(Long parentid);
 }

@@ -13,15 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(value = "/page")
 public class PageChange {
     /**
-     * 进入首页index页面
-     * @return
-     */
-    @RequestMapping(value="/index")
-    public String index(){
-        return "address_Of_The_APP";
-    }
-
-    /**
      * 进入首页
      * @return
      */
@@ -233,5 +224,14 @@ public class PageChange {
     @RequestMapping(value="/check_Account_Details.do")
     public String check_Account_Details(){
         return "check_Account_Details";
+    }
+
+    /**
+     * 进入账户信息页面
+     * @return
+     */
+    @RequestMapping(value="/agent_Manage.do")
+    public String agent_Manage(){
+        return "agent_Manage";
     }
 }

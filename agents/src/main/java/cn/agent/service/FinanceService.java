@@ -1,6 +1,7 @@
 package cn.agent.service;
 
 import cn.agent.pojo.Finance;
+import cn.agent.pojo.Types;
 import cn.agent.pojo.Users;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -74,14 +75,8 @@ interface FinanceService {
      * @param pageSize 页大小
      * @return
      */
-    Page<Finance> queryFinanceByCreatetimeBetween(Date createtime, Date createtime2, Long userid,Integer pageSum, Integer pageSize);
+    Page<Finance> queryFinanceByCreatetimeBetween(Date createtime, Date createtime2, Long userid, Long finatype, Integer pageSum, Integer pageSize);
 
-    /**
-     *根据条件查询总记录数
-     * @param createtime 最小时间
-     * @param createtime2 最大时间
-     * @return
-     */
-    Long countFinanceByCreatetimeBetween(Date createtime, Date createtime2,Long userid);
+
 
 }

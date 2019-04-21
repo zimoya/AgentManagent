@@ -3,15 +3,17 @@ package cn.agent.service.impl;
 import cn.agent.dao.TypesDao;
 import cn.agent.pojo.Types;
 import cn.agent.service.TypesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("typeService")
 public
 class TypesServiceImple implements TypesService {
-
+    @Autowired
+    private  TypesDao typesDao;
     @Override
     public
     boolean update(Types types) {
@@ -24,6 +26,11 @@ class TypesServiceImple implements TypesService {
         return false;
     }
 
+    /**
+     * 根据条件查询类型信息
+     * @param types 条件
+     * @return
+     */
     @Override
     public
     List<Types> findAllTypes(Types types) {
@@ -52,5 +59,15 @@ class TypesServiceImple implements TypesService {
     public
     boolean delete(Types types) {
         return false;
+    }
+
+    /**
+     * 根据父类id查询类型信息
+     * @param parentid
+     * @return
+     */
+    @Override
+    public List<Types> findTypesByParentid(Long parentid) {
+        return typesDao.findTypesByParentid(parentid);
     }
 }

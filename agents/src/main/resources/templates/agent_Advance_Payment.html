@@ -6,6 +6,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <script th:src="@{/resource/scripts/jquery-1.4.2.js}"></script>
+    <script th:src="@{/resource/scripts/js/AgentAdvancePayment.js}"></script>
     <style>
       #div_table table{position: absolute;width:960px;}
       #div_table table tr:nth-of-type(1){background:linear-gradient(to top,gray,#FFFFFF);}
@@ -30,22 +31,9 @@
 
     <!-- Unnamed (下拉列表框) -->
     <div id="u2" >
-    <p>操作类型<select id="u2_input">
-        <option selected value="系统自动—关键词申请扣款">系统自动—关键词申请扣款</option>
-        <option value="系统自动—返回预注册冻结资金">系统自动—返回预注册冻结资金</option>
-        <option value="系统自动—扣除申请关键词的所有资金">系统自动—扣除申请关键词的所有资金</option>
-        <option value="系统自动—扣除关键词续费资金">系统自动—扣除关键词续费资金</option>
-        <option value="代理款">代理款</option>
-        <option value="转账">转账</option>
-        <option value="财务打款">财务打款</option>
-        <option value="冻结">冻结</option>
-        <option value="扣费">扣费</option>
-        <option value="代理款冲抵">代理款冲抵</option>
-        <option value="消费">消费</option>
-        <option value="退费">退费</option>
-        <option value="返款">返款</option>
-        <option value="罚款">罚款</option>
-        <option value="代理款预录">代理款预录</option>
+    <p>操作类型>
+      <select id="u2_input">
+
       </select>
     </p>
       <p>操作时间:<input type="text"/>至<input type="text"/></p>

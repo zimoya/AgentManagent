@@ -3,7 +3,7 @@ package cn.agent.pojo;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,7 +28,7 @@ public class Role  implements Serializable {
 	 * 创建时间
 	 */
 	@Column(name = "CREATETIME")
-	private java.sql.Date createtime;
+	private Date createtime;
 	/**
 	 * 是否启用
 	 */
@@ -40,23 +40,10 @@ public class Role  implements Serializable {
 	@Column(name="EXISTSTATUS")
 	private Long existstatus;
 	/**
-	 * 用户
-	 */
-	@OneToMany(mappedBy = "role",cascade = CascadeType.MERGE)
-	private Set<Users> users=new HashSet<Users>();
-	/**
 	 * 权限
 	 */
 	@ManyToMany(targetEntity = Jurisdiction.class,cascade = CascadeType.MERGE)
 	private Set<Jurisdiction> jurisdictions=new HashSet<Jurisdiction>();
-
-	public Set<Users> getUsers() {
-		return users;
-	}
-
-	public void setUsers(Set<Users> users) {
-		this.users = users;
-	}
 
 	public Long getRoleid() {
 		return roleid;

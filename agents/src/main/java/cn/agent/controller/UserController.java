@@ -2,6 +2,7 @@ package cn.agent.controller;
 
 import cn.agent.pojo.Finance;
 import cn.agent.pojo.Log;
+import cn.agent.pojo.Types;
 import cn.agent.pojo.Users;
 import cn.agent.service.FinanceService;
 import cn.agent.service.LogService;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -67,7 +69,6 @@ public class UserController {
                     log.setLoginfo("用户进行登录，操作成功");
                     log.setLogtime(new Date());
                     logService.insertLog(log);
-                System.out.println(logService.insertLog(log));
             }else{
                 falg="error";
             }
@@ -119,15 +120,28 @@ public class UserController {
      * @param pageSum
      * @return
      */
-    @RequestMapping
+    @RequestMapping(value="/UsersDetail")
     @ResponseBody
-    public Page<Finance> getUsersDetail(@Param("createTime1")Date createTime1,@Param("createTime2") Date createTime2,@Param("pageSum") int pageSum,HttpSession session){
+    public Page<Finance> getUsersDetail(@Param("finatype")Long finatype,@Param("createTime1")Date createTime1,@Param("createTime2") Date createTime2,@Param("pageSum") int pageSum,HttpSession session){
         System.out.println("===================================createTime1="+createTime1);
         System.out.println("===================================createTime2="+createTime2);
         System.out.println("========================================pageSum="+pageSum);
         Long userid=((Users)session.getAttribute("user")).getUserid();
-        int pageSize=5;
-        Page<Finance> finances=financeService.queryFinanceByCreatetimeBetween(createTime1,createTime2,userid,pageSum,pageSize);
+        int pageSize=1;
+        Page<Finance> finances=financeService.queryFinanceByCreatetimeBetween(createTime1,createTime2,userid,finatype,pageSum,pageSize);
+        System.out.println(JSON.toJSONString(finances,true));
         return finances;
+    }
+
+    /**
+     * 查看用户资料
+     * @return
+     */
+    @RequestMapping(value = "/userInfo")
+    @ResponseBody
+    public Users findUserInfo(HttpSession session){
+        Users users=usersService.findById(((Users)session.getAttribute("user")).getUserid());
+        System.out.println(users.getRole().getRolename());
+        return users;
     }
 }

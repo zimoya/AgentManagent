@@ -90,7 +90,7 @@ class KeywordController {
         keyword.setAppStatus( 2l );
         //设置服务类型
         keyword.setTypes( types );//设置为上传到苹果商城
-        types.getKeywords().add( keyword );//建立关系
+        //types.getKeywords().add( keyword );//建立关系
         //设置年限
         keyword.setApplylimit(3l);
         keyword.setApplytime( new Date(  ) );
@@ -180,7 +180,7 @@ class KeywordController {
         //设置服务类型
         //建立关系
         keyword.setTypes( types );
-        types.getKeywords().add( keyword );
+        //types.getKeywords().add( keyword );
         keywordService.update( keyword );
         //扣费
         user.setBalance((double)( types.getTypevalue()*openYear));

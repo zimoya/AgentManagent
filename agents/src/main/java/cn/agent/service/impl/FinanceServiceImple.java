@@ -2,6 +2,7 @@ package cn.agent.service.impl;
 
 import cn.agent.dao.FinanceDao;
 import cn.agent.pojo.Finance;
+import cn.agent.pojo.Types;
 import cn.agent.pojo.Users;
 import cn.agent.service.FinanceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,7 @@ class FinanceServiceImple implements FinanceService {
         return false;
     }
 
+
     /**
      * 根据条件查询，分页查
      * @param createtime 最小时间
@@ -73,30 +75,21 @@ class FinanceServiceImple implements FinanceService {
      * @return
      */
     @Override
-    public Page<Finance> queryFinanceByCreatetimeBetween(Date createtime, Date createtime2,Long userid,Integer pageSum, Integer pageSize) {
+    public Page<Finance> queryFinanceByCreatetimeBetween(Date createtime, Date createtime2, Long userid, Long finatype, Integer pageSum, Integer pageSize) {
         Pageable pageable=PageRequest.of(pageSum==0?0:pageSum,pageSize,new Sort(Sort.Direction.DESC,"createtime"));
         Page<Finance> finances=null;
         //判断参数是否为空
-        if((createtime==null ||createtime.equals(""))&&(createtime2==null || createtime2.equals(""))){
+        if((createtime==null ||createtime.equals(""))&&(createtime2==null || createtime2.equals(""))||finatype==0){
             finances=financeDao.queryFinanceByUserid(userid,pageable);
-        }else{
+        }else if(finatype==0 && (createtime!=null ||!createtime.equals(""))&&(createtime2!=null || !createtime2.equals(""))){
             finances=financeDao.queryFinanceByCreatetimeBetweenAndUserid(createtime,createtime2,userid,pageable);
+        }else if(finatype!=0 && (createtime==null ||createtime.equals(""))&&(createtime2==null || createtime2.equals(""))){
+            finances=financeDao.queryFinanceByFinatypeAndUserid(finatype,userid,pageable);
+        }else{
+            finances=financeDao.queryFinanceByCreatetimeBetweenAndUseridAndFinatype(createtime,createtime2,userid,finatype,pageable);
         }
         return finances;
     }
 
-    /**
-     * 根据条件查询总记录数
-     * @param createtime 最小时间
-     * @param createtime2 最大时间
-     * @return
-     */
-    @Override
-    public Long countFinanceByCreatetimeBetween(Date createtime, Date createtime2,Long userid) {
-        if((createtime==null ||createtime.equals(""))&&(createtime2==null || createtime2.equals(""))){
-            return financeDao.count();
-        }else{
-            return financeDao.countFinanceByCreatetimeBetweenAndUserid(createtime,createtime2,userid);
-        }
-    }
+
 }
