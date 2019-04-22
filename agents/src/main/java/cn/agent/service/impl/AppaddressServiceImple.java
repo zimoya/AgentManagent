@@ -1,20 +1,29 @@
 package cn.agent.service.impl;
 
+import cn.agent.controller.AppAddressController;
+import cn.agent.dao.AppaddressDao;
 import cn.agent.pojo.Appaddress;
 import cn.agent.service.AppaddressService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public
 class AppaddressServiceImple implements AppaddressService {
-
+    @Autowired
+    private AppaddressDao appaddressDao;
 
     @Override
     public
     boolean update(Appaddress appaddress) {
+        Appaddress appaddress1=appaddressDao.save(appaddress);
+        if(appaddress1!=null){
+            return true;
+        }
         return false;
     }
 
@@ -39,7 +48,12 @@ class AppaddressServiceImple implements AppaddressService {
     @Override
     public
     Appaddress findById(Long id) {
-        return null;
+        Appaddress appaddress=null;
+        Optional<Appaddress> list= appaddressDao.findById(id);
+        if(list.isPresent()){
+            appaddress =list.get();
+        }
+        return appaddress;
     }
 
     @Override

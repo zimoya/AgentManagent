@@ -1,6 +1,6 @@
 /*查看账户明细功能js*/
 $(function () {
-    init("",'2013/10/23 ','',0);
+    init(0,'','',0);
     /**
      * 页码点击事件
      */
@@ -12,8 +12,10 @@ $(function () {
     /*页码代点击事件*/
     $("#div_table .div").on("click","div span",function(){
         var page=$(this).attr("names");
+        var time1=$("input[name='time1']").val();
+        var time2=$("input[name='time2']").val();
         alert(page);
-        init('','','',page);
+        init(0,time1,time2,page);
     });
 });
 function init(finatype,createTime1,createTime2,pageSum){
@@ -25,10 +27,9 @@ function init(finatype,createTime1,createTime2,pageSum){
     $.ajax({
         type:"GET",
         url:"/agent/user/UsersDetail",
-        data:{finatype:"",createTime1:createTime3,createTime2:createTime4,pageSum:pageSum},
+        data:{finatype:finatype,createTime1:createTime3,createTime2:createTime4,pageSum:pageSum},
         dataType:"json",
         success:function(data){
-
             //数据
            $("#div_table table tr:gt(0)").html("");
             $(data.content).each(function (i,e){
