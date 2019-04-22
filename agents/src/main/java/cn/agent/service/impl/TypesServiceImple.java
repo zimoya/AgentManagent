@@ -17,13 +17,21 @@ class TypesServiceImple implements TypesService {
     @Override
     public
     boolean update(Types types) {
+        Types types1=typesDao.save(types);
+        if(types1!=null){
+            return  true;
+        }
         return false;
     }
 
     @Override
     public
     boolean insert(Types types) {
-        return false;
+            Types types1=typesDao.save(types);
+            if(types1!=null){
+                return true;
+            }
+        return  false;
     }
 
     /**
@@ -68,6 +76,6 @@ class TypesServiceImple implements TypesService {
      */
     @Override
     public List<Types> findTypesByParentid(Long parentid) {
-        return typesDao.findTypesByParentid(parentid);
+        return typesDao.findTypesByParentidAndExist(parentid,0l);
     }
 }

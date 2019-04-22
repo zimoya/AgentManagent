@@ -1,4 +1,5 @@
 $(function () {
+
     init();
     $(".div div span ").click(function () {
         $(this).css("background","ghostwhite");
@@ -12,12 +13,80 @@ $(function () {
         $("#insert").hide();
         $("#update").hide();
     });
-    $(".up").click(function () {
+
+    /**
+     * 点击服务类型保存按钮
+     */
+    $(".insertSub").click(function () {
+        var  typeName=$("input[name=insertType]").val();
+        var  status=$("#insertSelect").val();
+        if(typeName!="" ) {
+            $.ajax({
+                type: "GET",
+                url: "/agent/finance/saveFinaceType.do",
+                data: {typeName: typeName, status: status},
+                dataType: "json",
+                success: function (data) {
+                    if (data == true) {
+                        alert("添加成功!");
+                        $("#insert").hide();
+                        init();
+                    } else {
+                        alert("网络延迟,路线繁忙请稍后再试!");
+                    }
+                },
+                error: function (data) {
+                    alert("网络发生异常!");
+                }
+            })
+        }else{
+            alert("类型名不可以为空!");
+        }
+    });
+    /**
+     * 点击修改按钮
+     */
+    $("#div_table table").on("click",".up",function(){
         var name=$(this).attr("name");
-        var id=$(this).attr("id");
-        $("#update input[type=text]").val(name);
-        $(".upSub").attr("id",id);
+        var id=$(this).parent().parent().attr("id");
+        var status=$(this).parent().parent().parent().prev().html();
+        if(status=="启用"){
+            $("#upSelect option[value=0]").attr("selected","true");
+        }else{
+            $("#upSelect option[value=1]").attr("selected","true");
+        }
+
+        $("#update input[name=upType]").val(name);
+
+        $("#update input[name=id]").val(id);
         $("#update").show();
+    })
+    $(".upSub").click(function () {
+        var  typeName=$("input[name=upType]").val();
+        var  status=$("#upSelect").val();
+        var  typeId=$("input[name=id]").val();
+        if(typeName!="" ) {
+            $.ajax({
+                type: "GET",
+                url: "/agent/finance/saveFinaceType.up",
+                data: {typeName: typeName, status: status,typeId,typeId},
+                dataType: "json",
+                success: function (data) {
+                    if (data == true) {
+                        alert("修改成功!");
+                        $("#update").hide();
+                        init();
+                    } else {
+                        alert("网络延迟,路线繁忙请稍后再试!");
+                    }
+                },
+                error: function (data) {
+                    alert("网络发生异常!");
+                }
+            })
+        }else{
+            alert("类型名不可以为空!");
+        }
     });
 });
 function init(){

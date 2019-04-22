@@ -22,5 +22,5 @@ interface TypesDao extends JpaRepository<Types,Long> {
      * @param parentid
      * @return
      */
-    public List<Types> findTypesByParentid(Long parentid);
+    public List<Types> findTypesByParentidAndExist(Long parentid, Long exist);
 }
