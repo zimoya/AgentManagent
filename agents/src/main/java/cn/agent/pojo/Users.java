@@ -62,6 +62,12 @@ public class Users  implements Serializable {
 	 */
 	@Column(name = "LASTLOGINTIME")
 	private Date lastlogintime; //最后一次登录时间
+
+	/**
+	 * 是否启用
+	 */
+	private Integer enable;
+
 	/**
 	 * 角色
 	 */
@@ -150,4 +156,11 @@ public class Users  implements Serializable {
 		this.lastlogintime = lastlogintime;
 	}
 
+	public Integer getEnable() {
+		return enable;
+	}
+
+	public void setEnable(Integer enable) {
+		this.enable = enable;
+	}
 }

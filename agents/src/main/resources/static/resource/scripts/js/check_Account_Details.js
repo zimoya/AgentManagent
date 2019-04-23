@@ -19,15 +19,15 @@ $(function () {
     });
 });
 function init(finatype,createTime1,createTime2,pageSum){
-    //调用ConvertStrToDate方法将字符串转日期
+/*    //调用ConvertStrToDate方法将字符串转日期
    var  createTime3=ConvertStrToDate(createTime1);
-   var  createTime4=ConvertStrToDate(createTime2);
+   var  createTime4=ConvertStrToDate(createTime2);*/
 
     /*查看账户明细*/
     $.ajax({
         type:"GET",
         url:"/agent/user/UsersDetail",
-        data:{finatype:finatype,createTime1:createTime3,createTime2:createTime4,pageSum:pageSum},
+        data:{finatype:finatype,createTime1:createTime1,createTime2:createTime2,pageSum:pageSum},
         dataType:"json",
         success:function(data){
             //数据
@@ -59,7 +59,7 @@ function init(finatype,createTime1,createTime2,pageSum){
 
 }
 
-
+/*
 //把字符串日期转为日期
 function ConvertStrToDate(datetimeStr) {
     var mydateint = Date.parse(datetimeStr);//数值格式的时间
@@ -100,4 +100,4 @@ function ConvertStrToDate(datetimeStr) {
     else {
         return new Date(year, month, day);
     }
-}
+}*/

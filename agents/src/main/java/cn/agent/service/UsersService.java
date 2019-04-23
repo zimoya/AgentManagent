@@ -40,7 +40,7 @@ interface UsersService {
      * @param pageSum 页数
      * @return 用户list
      */
-    Page<Users> findPageUsers(Users users, int pageSum);
+    Page<Users> findPageUsers(Users users, int pageSum,int pageSize);
 
     /**
      * 获取满足条件的记录数

@@ -1,10 +1,12 @@
 package cn.agent.service;
 
 import cn.agent.pojo.Log;
+import cn.agent.pojo.Users;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -40,5 +42,14 @@ interface LogService {
      * @return 记录个数
      */
     Long getCount(Log log);
+
+    /**
+     *  根据条件分页查询
+     * @param log
+     * @param pageSum
+     * @param pageSize
+     * @return
+     */
+    Page<Log> queryfindPageLogInfo(Log log,Integer pageSum,Integer pageSize);
 
 }

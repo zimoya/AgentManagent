@@ -2,8 +2,13 @@ package cn.agent.dao;
 
 import cn.agent.pojo.Appaddress;
 import cn.agent.pojo.Log;
+import cn.agent.pojo.Users;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.RepositoryDefinition;
+
+import java.util.Date;
 
 
 /**
@@ -14,4 +19,20 @@ import org.springframework.data.repository.RepositoryDefinition;
 public
 interface LogDao extends JpaRepository<Log,Long> {
 
+    /**
+     *根据用户查询日志信息
+     * @param users
+     * @param pageable
+     * @return
+     */
+    Page<Log> queryLogByUsers(Users users, Pageable pageable);
+
+    /**
+     * 根据用户和操作时间查询日志信息
+     * @param users
+     * @param logtime
+     * @param pageable
+     * @return
+     */
+    Page<Log> queryLogByUsersAndLogtime(Users users, Date logtime, Pageable pageable);
 }

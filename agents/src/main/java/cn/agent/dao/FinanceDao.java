@@ -57,5 +57,4 @@ interface FinanceDao extends JpaRepository<Finance,Long> {
      */
     Page<Finance> queryFinanceByUserid(Long userid, Pageable pageable);
 
-
 }

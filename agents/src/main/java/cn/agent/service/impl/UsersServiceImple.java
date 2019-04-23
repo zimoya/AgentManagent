@@ -5,6 +5,8 @@ import cn.agent.pojo.Users;
 import cn.agent.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -47,9 +49,27 @@ class UsersServiceImple implements UsersService {
         return null;
     }
 
+    /**
+     * 根据条件查询
+     * @param users   用户条件
+     * @param pageSum 页数
+     * @param pageSize
+     * @return
+     */
     @Override
-    public Page<Users> findPageUsers(Users users, int pageSum) {
-        return null;
+    public Page<Users> findPageUsers(Users users, int pageSum,int pageSize) {
+        Pageable pageable= PageRequest.of(pageSum==0?0:pageSum,pageSize);
+        Page<Users> users1=null;
+        if(users!=null && users.getUsername()==null && users.getRole().getRoleid()==0){
+            users1=usersDao.queryUsersByEnable(users.getEnable(),pageable);
+        }else if(users!=null && users.getUsername()!=null && users.getRole().getRoleid()==0){
+            users1=usersDao.queryUsersByUsernameAndEnable(users.getUsername(),users.getEnable(),pageable);
+        }else if(users!=null && users.getUsername()==null && users.getRole().getRoleid()!=0){
+            users1=usersDao.queryUsersByRoleAndEnable(users.getRole(),users.getEnable(),pageable);
+        }else{
+            users1=usersDao.queryUsersByUsernameAndRoleAndEnable(users.getUsername(),users.getRole(),users.getEnable(),pageable);
+        }
+        return users1;
     }
 
     @Override

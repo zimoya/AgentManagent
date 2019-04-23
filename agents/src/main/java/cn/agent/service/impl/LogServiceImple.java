@@ -5,8 +5,12 @@ import cn.agent.pojo.Log;
 import cn.agent.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service("logService")
@@ -49,5 +53,27 @@ class LogServiceImple implements LogService {
     public
     Long getCount(Log log) {
         return null;
+    }
+
+    /**
+     * 根据条件分页查询日志信息
+     * @param log
+     * @param pageSum
+     * @param pageSize
+     * @return
+     */
+    @Override
+    public Page<Log> queryfindPageLogInfo(Log log, Integer pageSum, Integer pageSize) {
+        Date time=log.getLogtime();
+        Pageable pageable= PageRequest.of(pageSum==0?0:pageSum,pageSize,new Sort(Sort.Direction.DESC,"logtime"));
+        Page<Log> logs=null;
+        if(log!=null && log.getUsers().getRole().getRoleid()==1){
+            logs=logDao.findAll(pageable);
+        }else if(log!=null && log.getUsers().getRole().getRoleid()!=1 && (log.getLogtime()==null ||log.getLogtime().equals(""))){
+            logs=logDao.queryLogByUsers(log.getUsers(),pageable);
+        }else if(log!=null && log.getUsers().getRole().getRoleid()!=1 && (log.getLogtime()!=null ||!log.getLogtime().equals(""))){
+            logs=logDao.queryLogByUsersAndLogtime(log.getUsers(),log.getLogtime(),pageable);
+        }
+        return logs;
     }
 }

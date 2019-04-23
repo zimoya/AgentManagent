@@ -1,10 +1,15 @@
 package cn.agent.dao;
 
 import cn.agent.pojo.Appaddress;
+import cn.agent.pojo.Role;
 import cn.agent.pojo.Users;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.RepositoryDefinition;
+
+import java.util.List;
 
 
 /**
@@ -21,4 +26,39 @@ interface UsersDao extends JpaRepository<Users,Long> {
      */
     Users findUsersByUsername(String username);
 
+    /**
+     * 根据用户名、角色是否启用查询所有用户
+     * @param username
+     * @param role
+     * @param enable
+     * @param pageable
+     * @return
+     */
+    Page<Users> queryUsersByUsernameAndRoleAndEnable(String username, Role role, Integer enable, Pageable pageable);
+
+    /**
+     * 根据用户名和是否启用查询所有用户
+     * @param username
+     * @param enable
+     * @param pageable
+     * @return
+     */
+    Page<Users> queryUsersByUsernameAndEnable(String username, Integer enable, Pageable pageable);
+
+    /**
+     * 根据用户角色和是否启用查询所有用户
+     * @param role
+     * @param enable
+     * @param pageable
+     * @return
+     */
+    Page<Users> queryUsersByRoleAndEnable(Role role, Integer enable, Pageable pageable);
+
+    /**
+     * 根据是否启用用户查询所有用户
+     * @param enable
+     * @param pageable
+     * @return
+     */
+    Page<Users> queryUsersByEnable(Integer enable, Pageable pageable);
 }

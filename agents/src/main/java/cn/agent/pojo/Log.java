@@ -40,7 +40,7 @@ public class Log  implements Serializable {
 	/**
 	 * 用户
 	 */
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name ="USERID")
 	private Users users;
 
