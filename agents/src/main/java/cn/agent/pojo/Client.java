@@ -46,7 +46,7 @@ public class Client  implements Serializable {
 	 * 	客户类型
 	 */
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "enterprisetype")
+	@JoinColumn(name = "ENTERPRISETYPE")
 	private Types types;
 	/**
 	 * 企业主页

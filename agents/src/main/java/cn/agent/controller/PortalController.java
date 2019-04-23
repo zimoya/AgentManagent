@@ -87,10 +87,11 @@ class PortalController {
                 linkman.setClient( client );
             }
             client.setUsers( user );
-            client = clientService.insert( client );
             client.setTypes( typesService.findById( client.getEnterprisetype() ) );
+            client = clientService.insert( client );
             portal.setClientid( client.getClientid() );
             portal.setCreatetime( new Date() );
+            portal.setTypes( typesService.findById( portal.getPaperstype() ) );
             portal = portalService.insert( portal );
             for (Linkman linkman : linkmans) {
                 linkmanService.insert( linkman );
@@ -127,10 +128,13 @@ class PortalController {
                 linkman.setClient( client );
             }
             client.setUsers( user );
-            client = clientService.update( client );
             client.setTypes( typesService.findById( client.getEnterprisetype() ) );
+            client = clientService.update( client );
             portal.setClientid( client.getClientid() );
+            portal.setTypes( typesService.findById( portal.getPaperstype() ) );
+            portal.setCreatetime( portalService.findById( portal.getPortalid() ).getCreatetime() );
             portal = portalService.update( portal );
+
             for (Linkman linkman : linkmans) {
                 linkmanService.update( linkman );
             }
