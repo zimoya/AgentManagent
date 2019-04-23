@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public
-interface JurisdictionService {
+interface   JurisdictionService {
     /**
      * 修改权限
      *

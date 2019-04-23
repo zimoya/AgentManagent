@@ -30,8 +30,8 @@ class FinanceServiceImple implements FinanceService {
 
     @Override
     public
-    boolean insert(Finance finance) {
-        return false;
+    boolean insert(Finance finance){
+        return financeDao.saveAndFlush( finance )!=null;
     }
 
     @Override

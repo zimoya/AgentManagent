@@ -16,11 +16,6 @@ import org.springframework.data.repository.query.Param;
 @RepositoryDefinition(domainClass= Keyword.class,idClass=Long.class)
 public
 interface KeywordDao extends JpaRepository<Keyword,Long> {
-    /*@Query(value = "SELECT * FROM KEYWORD WHERE KWNAME = :kwname",
-            countQuery = "SELECT count(*) FROM KEYWORD WHERE KWNAME = :kwname",
-            nativeQuery = true)
-    Page<Keyword> findByKwnamePage(@Param( "kwname" ) String kwname, Pageable pageable);*/
+    //错误标记: 需要设置成模糊对查询 Containing SQL Error: 1425, SQLState: 22019
     Page<Keyword> queryKeywordsByKwname(String kwname, Pageable pageable);
-    @Query("select count(1) from Keyword  k where k.kwname=:kwname ")
-    Long findCount(@Param( "kwname" ) String kwname);
 }

@@ -49,7 +49,7 @@ class KeywordServiceImpl implements KeywordService {
         if(kwname==null || kwname.length()<=0){ //没有条件限制
             keywords=keywordDao.findAll(pageable);
         }else{//存在条件限制后
-            keywords=keywordDao.queryKeywordsByKwname( kwname ,pageable);
+            keywords=keywordDao.queryKeywordsByKwname(kwname,pageable);
         }
         return keywords;
     }
@@ -57,23 +57,19 @@ class KeywordServiceImpl implements KeywordService {
     @Override
     public
     Long getCount(String kwname) {
-        if(kwname==null && kwname.length()<=0){ //没有条件限制
-            return keywordDao.count();
-        }else{//存在条件限制后
-            return keywordDao.findCount( kwname );
-        }
+        return null;
     }
 
     @Override
     public
     Keyword findById(Long id) {
-        return keywordDao.getOne( id );
+        return keywordDao.findById( id ).get();
     }
 
     @Override
     public
     boolean delete(Long id) {
         keywordDao.deleteById( id );
-        return keywordDao.existsById( id )==true;
+        return !keywordDao.existsById( id );
     }
 }

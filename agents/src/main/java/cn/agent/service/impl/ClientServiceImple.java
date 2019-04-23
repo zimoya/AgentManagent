@@ -50,7 +50,7 @@ class ClientServiceImple implements ClientService {
     @Override
     public
     Client findById(Long id) {
-        return null;
+        return clientDao.findById( id ).get();
     }
 
     @Override

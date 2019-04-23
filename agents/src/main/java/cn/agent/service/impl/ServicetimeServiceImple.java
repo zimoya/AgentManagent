@@ -16,6 +16,8 @@ class ServicetimeServiceImple implements ServicetimeService {
     @Autowired
     private ServicetimeDao servicetimeDao;
 
+    @Autowired
+    private ServicetimeDao servicetimeDao;
     public ServicetimeDao getServicetimeDao() {
         return servicetimeDao;
     }
@@ -61,6 +63,7 @@ class ServicetimeServiceImple implements ServicetimeService {
     @Override
     public
     Servicetime findById(Long id) {
+        return servicetimeDao.findById( id ).get();
         Servicetime servicetime1=null;
         Optional<Servicetime> servicetime=servicetimeDao.findById(id);
         if(servicetime.isPresent()){

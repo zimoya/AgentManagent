@@ -1,5 +1,7 @@
 package cn.agent.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -7,6 +9,7 @@ import java.util.Date;
 /**
  * 关键字
  */
+
 @Entity
 @Table(name = "KEYWORD")
 public class Keyword  implements Serializable {
@@ -23,13 +26,13 @@ public class Keyword  implements Serializable {
 	private Long clientid;
 	/**
 	 * 用户id
-	 *//*
-	@Column(name = "USERID")
-	private Long userid;*/
+	 */
+	@Column(name = "USERID", insertable =false,updatable=false)
+	private Long userid;
 	/**
 	 * 用户
 	 */
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userid")
 	private Users users;
 	/**
@@ -39,13 +42,13 @@ public class Keyword  implements Serializable {
 	private String kwname;
 	/**
 	 * 服务类别
-	 *//*
-	@Column(name = "TYPESID")
-	private Long typesid;*/
+	 */
+	@Column(name = "TYPESID" , insertable =false,updatable=false)
+	private Long typesid;
 	/**
 	 *服务类型
 	 */
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "typesid")
 	private Types types;
 	/**
@@ -69,12 +72,12 @@ public class Keyword  implements Serializable {
 	@Column(name = "LASTTIME")
 	private Date lasttime;
 	/**
-	 * 申请到到期状态(已过期，未过期)
+	 * 申请到到期状态(0:已过期，1:未过期)
 	 */
 	@Column(name = "STATUS")
 	private Long status;
 	/**
-	 * 审核状态
+	 * 审核状态  0核审中 1已通过 2未通过
 	 */
 	@Column(name = "AUDITSTATUS")
 	private Long auditstatus;
@@ -92,6 +95,26 @@ public class Keyword  implements Serializable {
 	public
 	Long getAppStatus() {
 		return appStatus;
+	}
+
+	public
+	Long getUserid() {
+		return userid;
+	}
+
+	public
+	void setUserid(Long userid) {
+		this.userid = userid;
+	}
+
+	public
+	Long getTypesid() {
+		return typesid;
+	}
+
+	public
+	void setTypesid(Long typesid) {
+		this.typesid = typesid;
 	}
 
 	public

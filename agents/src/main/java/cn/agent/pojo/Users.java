@@ -65,7 +65,7 @@ public class Users  implements Serializable {
 	/**
 	 * 角色
 	 */
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="ROLEID")
 	private Role role;
 

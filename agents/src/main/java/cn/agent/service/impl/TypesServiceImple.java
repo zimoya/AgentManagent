@@ -60,7 +60,7 @@ class TypesServiceImple implements TypesService {
     @Override
     public
     Types findById(Long id) {
-        return null;
+        return typesDao.findById( id ).get();
     }
 
     @Override

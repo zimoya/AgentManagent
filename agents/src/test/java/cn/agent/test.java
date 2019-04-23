@@ -20,16 +20,6 @@ public class test {
         //组合对象
         Users user=new Users();
         user.setRole( new Role() );
-        user.getRole().setUsers( new HashSet<Users>() );
-        user.getRole().getUsers().add( new Users() );
-        user.getRole().getUsers().add( new Users() );
-        user.getRole().getUsers().add( new Users() );
-        user.getRole().getUsers().add( new Users() );
-        user.setKeywords( new HashSet<Keyword>()  );
-        user.getKeywords().add( new Keyword() );
-        user.getKeywords().add( new Keyword() );
-        user.getKeywords().add( new Keyword() );
-        user.getKeywords().add( new Keyword() );
         try {
             f(user,1,3);
         } catch (ClassNotFoundException e) {

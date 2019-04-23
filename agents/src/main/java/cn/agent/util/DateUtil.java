@@ -13,8 +13,9 @@ public class DateUtil {
      * @return 添加后的时间
      */
     public static Date addYear(Date date, Long year){
-        c.setTime( new Date(  ) );
-        c.add( Calendar.YEAR,3 );
+        c.setTime( date );
+        int inyear= Math.toIntExact( year );
+        c.add( Calendar.YEAR, inyear);
         return c.getTime();
     }
     private static Calendar c = Calendar.getInstance();
