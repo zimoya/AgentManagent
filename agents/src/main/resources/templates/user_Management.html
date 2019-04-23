@@ -6,6 +6,8 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <script th:src="@{/resource/scripts/jquery-1.4.2.js}"></script>
+      <script th:src="@{/resource/scripts/jquery-1.7.1.min.js}"></script>
+    <script th:src="@{/resource/scripts/js/UserManagement.js}"></script>
     <style>
       body {margin:0px;background-image:none;position:static;left:auto;width:auto;margin-left:0;margin-right:0;text-align:left;}
       #u0 {position:absolute;left:46px;top:35px;width:990px;height:737px;}
@@ -43,7 +45,7 @@
       #body #selected #bottom #page{list-style: none;margin: 0; padding: 0;display: flex;justify-content: center;}
       #body #selected #bottom #page li{background-color: #EfefEf;border: 1px solid #ccc;text-align: center;width: 5%;border-radius: 5px;}
       #body #selected #bottom #page .active{background-color: #ccc;}
-
+      table{position: absolute;top: 400px}
       #body #add-update{width: 400px;position:absolute;z-index: 5;left: 30%;top:100px; background-color: #fcefa1;padding: 10px;border-radius: 5px;}
       #body #add-update>p{text-align: center; margin-bottom: 10px;}
       #body #add-update form{margin: 0 auto; width: 90%;}
@@ -84,21 +86,21 @@
 
           <div id="u2" class="ax_文本框_单行_">
             <span>用户名称:</span>
-            <input id="selectedByUserName" type="text" value=""/>
+            <input id="selectedByUserName" type="text"/>
           </div>
 
 
           <div id="u3" class="ax_下拉列表框">
             <span >角色:</span>
             <select id="selectedByUser">
-              <option selected value="—请选择—">—请选择—</option>
+              <!--<option selected value="—请选择—">—请选择—</option>
               <option value="系统管理员">系统管理员</option>
               <option value="代理商">代理商</option>
               <option value="财务">财务</option>
               <option value="客服">客服</option>
               <option value="市场">市场</option>
               <option value="大区经理">大区经理</option>
-              <option value="渠道经理">渠道经理</option>
+              <option value="渠道经理">渠道经理</option>-->
             </select>
           </div>
 
@@ -106,8 +108,8 @@
           <div id="u4" class="ax_下拉列表框">
             <span>是否启用:</span>
             <select id="selectedByIsOpen">
-              <option selected value="启用">启用</option>
-              <option value="未启用">未启用</option>
+              <option selected value="0">启用</option>
+              <option value="1">未启用</option>
             </select>
           </div>
           <div><img id="selectedSubmit" class="img " th:src="@{/images/u9.png}"/></div>
@@ -118,27 +120,14 @@
       </div>
 
       <table>
-        <thead>
-        <th>登录账号</th>
-        <th>用户名称</th>
-        <th>角色</th>
-        <th>创建时间</th>
-        <th>是否启用</th>
-        <th>操作</th>
-        </thead>
-        <tbody>
-        <td>登录账号</td>
-        <td>用户名称</td>
-        <td>角色</td>
-        <td>创建时间</td>
-        <td>是否启用</td>
-        <td><ul>
-          <li id="up">修改</li>
-          <li>删除</li>
-          <li id="yu">预付款</li>
-          <li id="log">LOG日志</li>
-        </ul></td>
-        </tbody>
+        <tr>
+            <td>登录账号</td>
+            <td>用户名称</td>
+            <td>角色</td>
+            <td>最后一次时间</td>
+            <td>是否启用</td>
+            <td>操作</td>
+        </tr>
       </table>
       <div id="bottom">
         <ul id="page">

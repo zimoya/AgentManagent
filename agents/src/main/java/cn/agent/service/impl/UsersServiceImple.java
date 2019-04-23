@@ -60,11 +60,11 @@ class UsersServiceImple implements UsersService {
     public Page<Users> findPageUsers(Users users, int pageSum,int pageSize) {
         Pageable pageable= PageRequest.of(pageSum==0?0:pageSum,pageSize);
         Page<Users> users1=null;
-        if(users!=null && users.getUsername()==null && users.getRole().getRoleid()==0){
+        if(users!=null && (users.getUsername()==null||users.getUsername().equals("")) && users.getRole().getRoleid()==0){
             users1=usersDao.queryUsersByEnable(users.getEnable(),pageable);
-        }else if(users!=null && users.getUsername()!=null && users.getRole().getRoleid()==0){
+        }else if(users!=null && (users.getUsername()!=null|| !users.getUsername().equals("")) && users.getRole().getRoleid()==0){
             users1=usersDao.queryUsersByUsernameAndEnable(users.getUsername(),users.getEnable(),pageable);
-        }else if(users!=null && users.getUsername()==null && users.getRole().getRoleid()!=0){
+        }else if(users!=null && (users.getUsername()==null||users.getUsername().equals("")) && users.getRole().getRoleid()!=0){
             users1=usersDao.queryUsersByRoleAndEnable(users.getRole(),users.getEnable(),pageable);
         }else{
             users1=usersDao.queryUsersByUsernameAndRoleAndEnable(users.getUsername(),users.getRole(),users.getEnable(),pageable);

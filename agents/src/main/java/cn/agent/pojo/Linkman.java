@@ -1,6 +1,8 @@
 package cn.agent.pojo;
 
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -14,7 +16,8 @@ public class Linkman  implements Serializable {
 	 * 联系人编号
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name="increment",strategy = "increment")
 	private Long linkmanid;
 /*	*
 	 * 客户编号

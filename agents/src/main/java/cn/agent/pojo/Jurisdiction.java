@@ -1,6 +1,8 @@
 package cn.agent.pojo;
 
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -18,7 +20,8 @@ public class Jurisdiction  implements Serializable {
 	 * 权限id
 	 */
 	@Id
-	@Column(name = "JDID")
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name="increment",strategy = "increment")
 	private Long jdid;
 	/**
 	 * 权限名称

@@ -7,6 +7,7 @@ import cn.agent.pojo.Users;
 import cn.agent.service.LogService;
 import cn.agent.service.RoleService;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/role")
@@ -77,4 +79,14 @@ class RoleController {
     }
 
 
+    /**
+     * /查询所有的角色信息
+     * @return
+     */
+    @RequestMapping(value = "bindrole")
+    @ResponseBody
+    public Object FindAllRoleInfo(){
+        List<Role> role=roleService.findAllRoleInfo();
+        return JSONArray.toJSONString(role);
+    }
 }

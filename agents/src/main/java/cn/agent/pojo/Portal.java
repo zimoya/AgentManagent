@@ -1,6 +1,8 @@
 package cn.agent.pojo;
 
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -15,7 +17,8 @@ public class Portal  implements Serializable {
 	 * 门户编号
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name="increment",strategy = "increment")
 	private Long portalid;
 	/**
 	 * 客户编号

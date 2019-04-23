@@ -2,6 +2,7 @@ package cn.agent.pojo;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -18,7 +19,8 @@ public class Finance  implements Serializable {
 	 * 财务明细编号
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name="increment",strategy = "increment")
 	private Long finaid;  //财务明细编号
 
 	/**

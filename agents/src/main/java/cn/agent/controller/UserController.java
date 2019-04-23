@@ -2,12 +2,14 @@ package cn.agent.controller;
 
 import cn.agent.pojo.Finance;
 import cn.agent.pojo.Log;
+import cn.agent.pojo.Role;
 import cn.agent.pojo.Users;
 import cn.agent.service.FinanceService;
 import cn.agent.service.LogService;
 import cn.agent.service.UsersService;
 import cn.agent.util.DateUtil;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,6 +24,7 @@ import javax.swing.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 用户
@@ -161,5 +164,27 @@ public class UserController {
         return users;
     }
 
+    /**
+     * 查询所有的用户
+     * @return
+     */
+    @RequestMapping(value = "/userInfo.json")
+    @ResponseBody
+    public String findAllUserInfo(@Param("username") String username,@Param("roleId") long roleId,@Param("enable") Integer enable,@Param("pageSum")int pageSum){
+        System.out.println("=================================username="+username);
+        System.out.println("=================================roleId="+roleId);
+        System.out.println("=================================enable="+enable);
+        System.out.println("=================================pageSum="+pageSum);
+        int pageSize=10;
+        Users users=new Users();
+        users.setUsername(username);
+        Role role=new Role();
+        role.setRoleid(roleId);
+        users.setRole(role);
+        users.setEnable(enable);
+        Page<Users> users1=usersService.findPageUsers(users,pageSum,pageSize);
+        System.out.println(JSON.toJSONString(users1,true));
+        return JSON.toJSONString(users1);
+    }
 
 }

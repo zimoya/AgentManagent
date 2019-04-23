@@ -1,6 +1,8 @@
 package cn.agent.pojo;
 
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -17,7 +19,8 @@ public class Role  implements Serializable {
 	 * 角色id
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name="increment",strategy = "increment")
 	private Long roleid;
 	/**
 	 * 角色名

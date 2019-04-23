@@ -58,4 +58,12 @@ class RoleServiceImple implements RoleService {
          roleDao.delete( role );
         return roleDao.existsById( role.getRoleid() );
     }
+    /**
+     * 查询全部的角色信息
+     * @return
+     */
+    public List<Role> findAllRoleInfo(){
+        return roleDao.findAll();
+    }
+
 }

@@ -1,5 +1,7 @@
 package cn.agent.pojo;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -15,8 +17,10 @@ public class Types  implements Serializable {
 	 * 类型编号
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="sql_type")
-	@SequenceGenerator(name = "sql_type",sequenceName ="sqltype")
+	/*@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="sql_type")
+	@SequenceGenerator(name = "sql_type",sequenceName ="sqltype")*/
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name="increment",strategy = "increment")
 	private Long typeid;
 	/**
 	 * 父类编号

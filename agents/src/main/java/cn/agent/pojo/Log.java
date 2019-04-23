@@ -29,8 +29,10 @@ public class Log  implements Serializable {
 	 * 日志id
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "sql_Log")
-	@SequenceGenerator(name = "sql_Log",sequenceName ="seqLog")
+	/*@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "sql_Log")
+	@SequenceGenerator(name = "sql_Log",sequenceName ="seqLog")*/
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name="increment",strategy = "increment")
 	private Long logid;
 /*	*//**
 	 * 用户id

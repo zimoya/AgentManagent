@@ -63,4 +63,5 @@ interface RoleService {
      */
     boolean delete(Role role);
 
+    public List<Role> findAllRoleInfo();
 }
