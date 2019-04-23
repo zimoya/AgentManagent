@@ -19,8 +19,8 @@ class ClientServiceImple implements ClientService {
 
     @Override
     public
-    boolean update(Client client) {
-        return clientDao.saveAndFlush( client )==null;
+    Client update(Client client) {
+        return clientDao.saveAndFlush( client );
     }
 
     @Override

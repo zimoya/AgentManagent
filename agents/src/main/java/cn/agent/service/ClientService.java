@@ -16,7 +16,7 @@ interface ClientService {
      * @param client 客户信息
      * @return 是否修改成功
      */
-    boolean update(Client client);
+    Client update(Client client);
 
     /**
      * 添加客户信息

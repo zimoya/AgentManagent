@@ -37,34 +37,16 @@ public class Client  implements Serializable {
 	 */
 	@Column(name = "ENTERPRISENAME")
 	private String enterprisename; //企业名称
-
-	public
-	Long getUsersid() {
-		return usersid;
-	}
-
-	public
-	void setUsersid(Long usersid) {
-		this.usersid = usersid;
-	}
-
-	public
-	Long getEnterprisetype() {
-		return enterprisetype;
-	}
-
-	public
-	void setEnterprisetype(Long enterprisetype) {
-		this.enterprisetype = enterprisetype;
-	}
-
+	/**
+	 * 企业类型
+	 */
 	@Column(name = "ENTERPRISETYPE",insertable = false,updatable = false)
 	private Long enterprisetype;  //企业类型
 	/**
 	 * 	客户类型
 	 */
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "TYPEID")
+	@JoinColumn(name = "enterprisetype")
 	private Types types;
 	/**
 	 * 企业主页
@@ -72,10 +54,11 @@ public class Client  implements Serializable {
 	@Column(name = "ENTERPRISEURL")
 	private String enterpriseurl;
 	/**
-	 * 使用状态
+	 * 使用状态 0 启用 1禁用
 	 */
 	@Column(name = "STATUS")
 	private Long status;
+
 
 	public Long getClientid() {
 		return clientid;
@@ -124,6 +107,27 @@ public class Client  implements Serializable {
 	public void setStatus(Long status) {
 		this.status = status;
 	}
+
+	public
+	Long getUsersid() {
+		return usersid;
+	}
+
+	public
+	void setUsersid(Long usersid) {
+		this.usersid = usersid;
+	}
+
+	public
+	Long getEnterprisetype() {
+		return enterprisetype;
+	}
+
+	public
+	void setEnterprisetype(Long enterprisetype) {
+		this.enterprisetype = enterprisetype;
+	}
+
 
 
 }

@@ -15,7 +15,7 @@ interface PortalService {
      * @param portal 条件
      * @return 是否修改成功
      */
-    boolean update(Portal portal);
+    Portal update(Portal portal);
 
     /**
      * 添加门户信息
@@ -23,7 +23,7 @@ interface PortalService {
      * @param portal 条件
      * @return 是否添加成功
      */
-    boolean insert(Portal portal);
+    Portal insert(Portal portal);
 
     /**
      * 根据条件获取满足条件的门户信息

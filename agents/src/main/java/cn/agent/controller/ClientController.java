@@ -52,8 +52,8 @@ public class ClientController {
     @RequestMapping(value = {"/updateClient","/update"})
     public Object updateClient(HttpSession session,Client client){
         //参数监测
-        boolean result=clientService.update(client);
+        client=clientService.update(client);
         logService.insertLog( new Log( (Users) session.getAttribute( "user" ),"修改客户:"+client.getClientid() ,new Date(  )) );
-        return JSON.parseObject( "{\"updateResult\":\""+result+"\"}" );
+        return JSON.parseObject( "{\"updateResult\":\""+client+"\"}" );
     }
 }

@@ -15,7 +15,7 @@ interface LinkmanService {
      * @param linkman 条件
      * @return 是否修改成功
      */
-    boolean update(Linkman linkman);
+    Linkman update(Linkman linkman);
 
     /**
      * 添加联系人
@@ -23,7 +23,7 @@ interface LinkmanService {
      * @param linkman 条件
      * @return 是否添加成功
      */
-    boolean insert(Linkman linkman);
+    Linkman insert(Linkman linkman);
 
     /**
      * 根据条件获取满足条件的联系人
@@ -33,6 +33,12 @@ interface LinkmanService {
      */
     List<Linkman> findAllLinkman(Linkman linkman);
 
+    /**
+     * 获取指定客户的联系人
+     * @param clientId
+     * @return
+     */
+    List<Linkman> findLinkmanByClientId(Long clientId);
     /**
      * 根据条件获取指定页数的联系人对象
      * @param linkman 联系人条件
@@ -54,6 +60,13 @@ interface LinkmanService {
      * @return 联系人
      */
     Linkman findById(Long id);
+    /**
+     * 根据id删除联系人
+     *
+     * @param id 条件
+     * @return 联系人
+     */
+    Linkman delById(Long id);
 
     /**
      * 删除联系人

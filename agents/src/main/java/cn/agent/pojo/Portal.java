@@ -30,14 +30,17 @@ public class Portal  implements Serializable {
 	 */
 	@Column(name = "CORPORATE")
 	private String corporate;
-
-	/*@Column(name = "PAPERSTYPE")
-	private Long paperstype; //证件类型*/
 	/**
 	 * 证件类型
 	 */
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="TYPEID")
+	@Column(name = "PAPERSTYPE",insertable = false,updatable = false)
+	private Long paperstype; //证件类型
+
+	/**
+	 * 证件类型
+	 */
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="PAPERSTYPE")
 	private Types types;
 	/**
 	 * 证件值
@@ -200,5 +203,15 @@ public class Portal  implements Serializable {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	public
+	Long getPaperstype() {
+		return paperstype;
+	}
+
+	public
+	void setPaperstype(Long paperstype) {
+		this.paperstype = paperstype;
 	}
 }

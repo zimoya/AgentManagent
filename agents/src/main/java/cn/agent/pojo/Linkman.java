@@ -19,14 +19,15 @@ public class Linkman  implements Serializable {
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name="increment",strategy = "increment")
 	private Long linkmanid;
-/*	*
+   /**
 	 * 客户编号
-	@Column(name = "CLIENTID")
-	private Long clientid;*/
+	*/
+	@Column(name = "CLIENTID",insertable = false,updatable = false)
+	private Long clientid;
 	/**
 	 * 客户
 	 */
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "clientid")
 	private Client client;
 	/**
@@ -111,4 +112,13 @@ public class Linkman  implements Serializable {
 		this.duty = duty;
 	}
 
+	public
+	Long getClientid() {
+		return clientid;
+	}
+
+	public
+	void setClientid(Long clientid) {
+		this.clientid = clientid;
+	}
 }

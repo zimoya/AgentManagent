@@ -5,6 +5,8 @@ import cn.agent.pojo.Linkman;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.RepositoryDefinition;
 
+import java.util.List;
+
 
 /**
  * 使用update和delete的时候一定要加上@Modifying这个注解，在这里使用到事务所有必须加上事务如果不加则会Bug" 爆炸~~~"
@@ -13,4 +15,5 @@ import org.springframework.data.repository.RepositoryDefinition;
 @RepositoryDefinition(domainClass= Linkman.class,idClass=Long.class)
 public
 interface LinkmanDao extends JpaRepository<Linkman,Long> {
+    List<Linkman> findLinkmanByClientid(Long clientid);
 }
