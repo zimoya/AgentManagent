@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
@@ -34,6 +35,7 @@ public class PapersController {
     public List<Types> findTypes(@Param("typeParentId") Long typeParentId, HttpSession session){
         List<Types> list=typesService.findTypesByParentid(typeParentId);
         /*  System.out.println(JSON.toJSONString(list,true));*/
+
         Users user=(Users) session.getAttribute("user");
         Log log=new Log();
         log.setUsers(user);
@@ -41,5 +43,115 @@ public class PapersController {
         log.setLogtime(new Date());
         logService.insertLog(log);
         return list;
+    }
+    /**
+     * 添加证件类型
+     * @param typeName
+     * @param status
+     * @param session
+     * @return
+     */
+    @RequestMapping(value="/financeType.do")
+    @ResponseBody
+    public boolean  saveFindTypes(@RequestParam String typeName, @RequestParam  Long status, HttpSession session){
+        System.out.println("证件类型================================================>");
+        System.out.println("status======================================================>"+typeName);
+        System.out.println("status======================================================>"+status);
+        Long parent=24l;
+        Types types=new Types();
+        types.setParentid(parent);
+        types.setTypename(typeName);
+        types.setStatus(status);
+        types.setExist(0l);
+        boolean  find= typesService.insert(types);
+        if(find==true){
+            Users user=(Users) session.getAttribute("user");
+            Log log=new Log();
+            log.setUsers(user);
+            log.setLoginfo("成功添加证件类型");
+            log.setLogtime(new Date());
+            logService.insertLog(log);
+        }else{
+            Users user=(Users) session.getAttribute("user");
+            Log log=new Log();
+            log.setUsers(user);
+            log.setLoginfo("添加证件类型发生延迟");
+            log.setLogtime(new Date());
+            logService.insertLog(log);
+        }
+        return find;
+    }
+
+    /**
+     * 修改证件类型
+     * @param typeName
+     * @param status
+     * @param session
+     * @return
+     */
+    @RequestMapping(value="/financeType.up")
+    @ResponseBody
+    public boolean  upFindTypes(@RequestParam String typeName,@RequestParam  Long status,@RequestParam Long typeId, HttpSession session){
+        System.out.println("证件类型================================================>");
+        System.out.println("status======================================================>"+typeName);
+        System.out.println("status======================================================>"+status);
+        Long parent=24l;
+        Types types=new Types();
+        types.setTypeid(typeId);
+        types.setParentid(parent);
+        types.setTypename(typeName);
+        types.setStatus(status);
+        types.setExist(0l);
+        boolean  find= typesService.update(types);
+        if(find==true){
+            Users user=(Users) session.getAttribute("user");
+            Log log=new Log();
+            log.setUsers(user);
+            log.setLoginfo("成功修改证件类型");
+            log.setLogtime(new Date());
+            logService.insertLog(log);
+        }else{
+            Users user=(Users) session.getAttribute("user");
+            Log log=new Log();
+            log.setUsers(user);
+            log.setLoginfo("修改证件类型发生延迟");
+            log.setLogtime(new Date());
+            logService.insertLog(log);
+        }
+        return find;
+    }
+
+    /**
+     * 根据id删除证件类型
+     * @param id
+     * @param session
+     * @return
+     */
+    @RequestMapping(value="/financeType.del")
+    @ResponseBody
+    public  boolean del(@RequestParam Long id,HttpSession session){
+        System.out.println("证件类型删除操作============================================>");
+        System.out.println("id====================================="+id);
+        Types types=typesService.findById(id);
+        if(types!=null){
+            boolean find= typesService.delete(types);
+            Users user=(Users) session.getAttribute("user");
+            Log log=new Log();
+            log.setUsers(user);
+            log.setLoginfo("删除证件类型");
+            log.setLogtime(new Date());
+            logService.insertLog(log);
+
+            return find;
+        }else{
+            Users user=(Users) session.getAttribute("user");
+            Log log=new Log();
+            log.setUsers(user);
+            log.setLoginfo("删除证件类型");
+            log.setLogtime(new Date());
+            logService.insertLog(log);
+            return true;
+        }
+
     }
 }
