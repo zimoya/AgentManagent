@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service("typeService")
 public
@@ -66,7 +67,12 @@ class TypesServiceImple implements TypesService {
     @Override
     public
     boolean delete(Types types) {
-        return false;
+        typesDao.delete(types);
+        Optional<Types> types1=typesDao.findById(types.getTypeid());
+        if(types1.isPresent()){
+            return false;
+        }
+        return true;
     }
 
     /**

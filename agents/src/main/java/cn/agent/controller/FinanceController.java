@@ -50,7 +50,7 @@ public class FinanceController {
     }
 
     /**
-     * 添加服务类型
+     * 添加财务类型
      * @param typeName
      * @param status
      * @param session
@@ -88,7 +88,7 @@ public class FinanceController {
     }
 
     /**
-     * 修改服务类型
+     * 修改财务类型
      * @param typeName
      * @param status
      * @param session
@@ -124,5 +124,39 @@ public class FinanceController {
             logService.insertLog(log);
         }
         return find;
+    }
+
+    /**
+     * 根据id删除财务类型
+     * @param id
+     * @param session
+     * @return
+     */
+    @RequestMapping(value="/saveFinaceType.del")
+    @ResponseBody
+    public  boolean del(@RequestParam Long id,HttpSession session){
+        System.out.println("财务类型删除操作============================================>");
+        System.out.println("id====================================="+id);
+        Types types=typesService.findById(id);
+        if(types!=null){
+          boolean find= typesService.delete(types);
+            Users user=(Users) session.getAttribute("user");
+            Log log=new Log();
+            log.setUsers(user);
+            log.setLoginfo("删除财务类型");
+            log.setLogtime(new Date());
+            logService.insertLog(log);
+
+          return find;
+        }else{
+            Users user=(Users) session.getAttribute("user");
+            Log log=new Log();
+            log.setUsers(user);
+            log.setLoginfo("删除财务类型");
+            log.setLogtime(new Date());
+            logService.insertLog(log);
+            return true;
+        }
+
     }
 }

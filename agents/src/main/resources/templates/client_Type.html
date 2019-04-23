@@ -37,23 +37,24 @@
     <img th:src="@{/images/u4.png}">
     <div id="insert">
       <div><strong>您正在进行添加操作</strong></div>
-      <div>类型名称:<input type="text"></div>
+      <div>类型名称:<input type="text" name="insertType"></div>
       <div>是否启用:
-        <select>
-          <option selected>启用</option>
-          <option>不启用</option>
+        <select id="insertSelect">
+          <option selected value="0">启用</option>
+          <option value="1">不启用</option>
         </select>
-        <input type="button" value="保存"/>
+        <input type="button" class="insertSub" value="保存"/>
         <input type="button"  class="esc" value="取消"/>
       </div>
     </div>
     <div id="update">
       <div><strong>您正在进行添加操作</strong></div>
-      <div>类型名称:<input type="text" name="name"></div>
+      <div><input type="text" name="id" style="display: none;"></div>
+      <div>类型名称:<input type="text" name="upType"></div>
       <div>是否启用:
-        <select>
-          <option selected>启用</option>
-          <option>不启用</option>
+        <select id="upSelect">
+          <option selected value="0">启用</option>
+          <option value="1">不启用</option>
         </select>
         <input type="button" class="upSub" value="保存"/>
         <input type="button"  class="esc" value="取消"/>

@@ -60,6 +60,25 @@ $(function () {
 
         $("#update input[name=id]").val(id);
         $("#update").show();
+    });
+    $("#div_table table").on("click",".del",function () {
+        var id=$(this).parent().parent().attr("id");
+        $.ajax({
+            type:"GET",
+            url:"/agent/finance/saveFinaceType.del",
+            data:{id:id},
+            dataType:"json",
+            success:function (data) {
+                if(data==true){
+                    init();
+                }else{
+                    alert("网络延迟!");
+                }
+            },
+            error:function (data) {
+                alert("网络异常");
+            }
+        })
     })
     $(".upSub").click(function () {
         var  typeName=$("input[name=upType]").val();
@@ -69,7 +88,7 @@ $(function () {
             $.ajax({
                 type: "GET",
                 url: "/agent/finance/saveFinaceType.up",
-                data: {typeName: typeName, status: status,typeId,typeId},
+                data: {typeName: typeName, status: status,typeId:typeId},
                 dataType: "json",
                 success: function (data) {
                     if (data == true) {
@@ -112,7 +131,7 @@ function init(){
                     "<td>"+e.typename+"</td>\n" +
                     "<td>"+stats+"</td>\n" +
                     "<td> <div id="+e.typeid+"> <div><a href='javascript:void(0)' class='up' name="+e.typename+" >修改</a></div>"+
-                     "<div><a href='javascript:void(0)'  >删除</a> </div>  </div> </td>");
+                     "<div><a href='javascript:void(0)' class='del'  >删除</a> </div>  </div> </td>");
             });
             $("#div_table .div").html("");
           /*  //页数操作
