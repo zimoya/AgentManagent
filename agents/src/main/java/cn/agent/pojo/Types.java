@@ -15,7 +15,8 @@ public class Types  implements Serializable {
 	 * 类型编号
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="sql_type")
+	@SequenceGenerator(name = "sql_type",sequenceName ="sqltype")
 	private Long typeid;
 	/**
 	 * 父类编号

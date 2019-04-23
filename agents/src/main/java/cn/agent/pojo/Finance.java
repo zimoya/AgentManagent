@@ -1,6 +1,8 @@
 package cn.agent.pojo;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -10,6 +12,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "FINANCE")
+@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "types" })
 public class Finance  implements Serializable {
 	/**
 	 * 财务明细编号
@@ -31,8 +34,8 @@ public class Finance  implements Serializable {
 	/**
 	 * 财务类型
 	 */
-/*	@ManyToOne(fetch =FetchType.LAZY)
-	@JoinColumn(name="TYPEID")
+	/*@ManyToOne(fetch =FetchType.LAZY)
+	@JoinColumn(name="FINATYPE")
 	private Types types;*/
 	/**
 	 * 账户余额

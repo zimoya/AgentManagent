@@ -27,4 +27,27 @@ public class Servicetime  implements Serializable {
 	@Column(name = "STVALUE")
 	private Long stvalue;
 
+	public Long getStid() {
+		return stid;
+	}
+
+	public void setStid(Long stid) {
+		this.stid = stid;
+	}
+
+	public String getStname() {
+		return stname;
+	}
+
+	public void setStname(String stname) {
+		this.stname = stname;
+	}
+
+	public Long getStvalue() {
+		return stvalue;
+	}
+
+	public void setStvalue(Long stvalue) {
+		this.stvalue = stvalue;
+	}
 }

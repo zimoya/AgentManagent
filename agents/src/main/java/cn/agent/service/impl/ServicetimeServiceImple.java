@@ -1,20 +1,36 @@
 package cn.agent.service.impl;
 
+import cn.agent.dao.ServicetimeDao;
 import cn.agent.pojo.Servicetime;
 import cn.agent.service.ServicetimeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public
 class ServicetimeServiceImple implements ServicetimeService {
+    @Autowired
+    private ServicetimeDao servicetimeDao;
 
+    public ServicetimeDao getServicetimeDao() {
+        return servicetimeDao;
+    }
+
+    public void setServicetimeDao(ServicetimeDao servicetimeDao) {
+        this.servicetimeDao = servicetimeDao;
+    }
 
     @Override
     public
     boolean update(Servicetime servicetime) {
+        Servicetime servicetime1=servicetimeDao.save(servicetime);
+        if(servicetime1!=null){
+            return true;
+        }
         return false;
     }
 
@@ -45,7 +61,12 @@ class ServicetimeServiceImple implements ServicetimeService {
     @Override
     public
     Servicetime findById(Long id) {
-        return null;
+        Servicetime servicetime1=null;
+        Optional<Servicetime> servicetime=servicetimeDao.findById(id);
+        if(servicetime.isPresent()){
+            servicetime1=servicetime.get();
+        }
+        return servicetime1;
     }
 
     @Override

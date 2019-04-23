@@ -36,13 +36,13 @@
 
       </select>
     </p>
-      <p>操作时间:<input type="text"/>至<input type="text"/></p>
+      <p>操作时间:<input type="text" id="time1"/>至<input type="text" id="time2"/></p>
       <p><img th:src="@{/images/u9.png}" id="img"></p>
     </div>
 
     <div id="div_table">
       <table style="text-align: center">
-        <tr>
+        <tr id="tr">
           <td>序列</td>
           <td>账务类型</td>
           <td>账务资金</td>
@@ -50,37 +50,7 @@
           <td>备注信息</td>
           <td>明细时间</td>
         </tr>
-        <tr>
-          <td>1</td>
-          <td>扣除[112]的正式注册资金</td>
-          <td>$2600</td>
-          <td>$156546545</td>
-          <td>dsadasfafsafasfasfsa</td>
-          <td>2014-02-02 12:22:33</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>扣除[112]的正式注册资金</td>
-          <td>$2600</td>
-          <td>$156546545</td>
-          <td>dsadasfafsafasfasfsa</td>
-          <td>2014-02-02 12:22:33</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>扣除[112]的正式注册资金</td>
-          <td>$2600</td>
-          <td>$156546545</td>
-          <td>dsadasfafsafasfasfsa</td>
-          <td>2014-02-02 12:22:33</td>
-        </tr>  <tr>
-        <td>1</td>
-        <td>扣除[112]的正式注册资金</td>
-        <td>$2600</td>
-        <td>$156546545</td>
-        <td>dsadasfafsafasfasfsa</td>
-        <td>2014-02-02 12:22:33</td>
-      </tr>
+
       </table>
       <div class="div">
         <div>
@@ -99,9 +69,6 @@
                 $(this).siblings().css("background","");
             })
         })
-      $("#img").click(function () {
-          alert("查询")
-      });
     </script>
   </body>
 </html>

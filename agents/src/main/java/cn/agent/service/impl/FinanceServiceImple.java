@@ -75,11 +75,11 @@ class FinanceServiceImple implements FinanceService {
      * @return
      */
     @Override
-    public Page<Finance> queryFinanceByCreatetimeBetween(Date createtime, Date createtime2, Long userid, Long finatype, Integer pageSum, Integer pageSize) {
+    public Page<Finance> queryFinanceByCreatetimeBetween(Date createtime, Date createtime2, Long userid, Long finatype,Integer pageSum, Integer pageSize) {
         Pageable pageable=PageRequest.of(pageSum==0?0:pageSum,pageSize,new Sort(Sort.Direction.DESC,"createtime"));
         Page<Finance> finances=null;
         //判断参数是否为空
-        if((createtime==null ||createtime.equals(""))&&(createtime2==null || createtime2.equals(""))||finatype==0){
+        if((createtime==null ||createtime.equals(""))&&(createtime2==null || createtime2.equals(""))&&finatype==0){
             finances=financeDao.queryFinanceByUserid(userid,pageable);
         }else if(finatype==0 && (createtime!=null ||!createtime.equals(""))&&(createtime2!=null || !createtime2.equals(""))){
             finances=financeDao.queryFinanceByCreatetimeBetweenAndUserid(createtime,createtime2,userid,pageable);

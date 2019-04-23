@@ -1,14 +1,23 @@
 /*查看账户明细功能js*/
 $(function () {
-    init("",'2013/10/23 ','',0);
+    init(0,'','',0);
     /**
      * 页码点击事件
      */
     $(".div div span ").click(function () {
         $(this).css("background","ghostwhite");
         $(this).siblings().css("background","");
-    })
-})
+    });
+
+    /*页码代点击事件*/
+    $("#div_table .div").on("click","div span",function(){
+        var page=$(this).attr("names");
+        var time1=$("input[name='time1']").val();
+        var time2=$("input[name='time2']").val();
+        alert(page);
+        init(0,time1,time2,page);
+    });
+});
 function init(finatype,createTime1,createTime2,pageSum){
     //调用ConvertStrToDate方法将字符串转日期
    var  createTime3=ConvertStrToDate(createTime1);
@@ -18,10 +27,9 @@ function init(finatype,createTime1,createTime2,pageSum){
     $.ajax({
         type:"GET",
         url:"/agent/user/UsersDetail",
-        data:{finatype:"",createTime1:createTime3,createTime2:createTime4,pageSum:pageSum},
+        data:{finatype:finatype,createTime1:createTime3,createTime2:createTime4,pageSum:pageSum},
         dataType:"json",
         success:function(data){
-
             //数据
            $("#div_table table tr:gt(0)").html("");
             $(data.content).each(function (i,e){
@@ -33,16 +41,15 @@ function init(finatype,createTime1,createTime2,pageSum){
                     "<td>"+e.description+"</td>" +
                     "<td>"+e.createtime+"</td></tr>");
             });
-            $("div_table .div").remove();
+            $("#div_table .div").html("");
             //页数操作
             if(data.totalPages>1){
                 var pages=data.totalPages;
-                alert("sss");
-                $("#div_table .div ").append("<div><span  name='0'>首页</span></div>");
+                $("#div_table .div ").append("<div><span  names='0'>首页</span></div>");
                 for (var i=0;i<pages;i++){
-                    $("#div_table .div div").append("<span name='"+i+"'>"+(i+1)+"</span>");
+                    $("#div_table .div div").append("<span  names='"+i+"'>"+(i+1)+"</span>");
                 }
-                $("#div_table .div div").append("<span  name='"+(pages-1)+"'>尾页</span>");
+                $("#div_table .div div").append("<span   names='"+(pages-1)+"'>尾页</span>");
             }
         },
         error:function(data){
@@ -51,10 +58,8 @@ function init(finatype,createTime1,createTime2,pageSum){
     });
 
 }
-/*页码代点击事件*/
-$("#div_table .div").on("click", "div span",function () {
-    
-})
+
+
 //把字符串日期转为日期
 function ConvertStrToDate(datetimeStr) {
     var mydateint = Date.parse(datetimeStr);//数值格式的时间

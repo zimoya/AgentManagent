@@ -6,6 +6,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <script th:src="@{/resource/scripts/jquery-1.4.2.js}"></script>
+      <script th:src="@{/resource/scripts/jquery-1.7.1.min.js}"></script>
     <script th:src="@{/resource/scripts/js/check_Account_Details.js}"></script>
     <style>
         #div_table table{position: absolute;width:960px;}
@@ -29,7 +30,7 @@
   <body>
  <div id="u2" >
 
-     <p>操作时间:<input type="text"/>至<input type="text"/></p>
+     <p>操作时间:<input name="time1" type="text"/>至<input name="time2" type="text"/></p>
      <p><img th:src="@{/images/u9.png}" id="img"></p>
  </div>
   <div id="div_table">
