@@ -2,6 +2,7 @@ package cn.agent.dao;
 
 import cn.agent.pojo.Appaddress;
 import cn.agent.pojo.Role;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.RepositoryDefinition;
 

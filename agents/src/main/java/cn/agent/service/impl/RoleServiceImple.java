@@ -5,6 +5,7 @@ import cn.agent.pojo.Role;
 import cn.agent.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,7 +38,11 @@ class RoleServiceImple implements RoleService {
     @Override
     public
     Page<Role> findPageRole(Role role, int pageSum) {
-        return null;
+        if(role==null){
+            return roleDao.findAll( PageRequest.of( pageSum,5 ) );
+        }else{
+            return null;
+        }
     }
 
     @Override
@@ -49,7 +54,7 @@ class RoleServiceImple implements RoleService {
     @Override
     public
     Role findById(Long id) {
-        return null;
+        return roleDao.findById( id ).get();
     }
 
     @Override

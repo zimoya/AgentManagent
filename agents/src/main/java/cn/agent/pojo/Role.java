@@ -38,7 +38,7 @@ public class Role  implements Serializable {
 	@Column(name = "STATUS")
 	private Long status;
 	/**
-	 * 是否存在
+	 * 是否存在 0已存在
 	 */
 	@Column(name="EXISTSTATUS")
 	private Long existstatus;

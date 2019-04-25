@@ -35,7 +35,7 @@ interface RoleService {
 
     /**
      * 根据条件获取指定页数的角色对象
-     * @param role 角色条件
+     * @param role 角色条件  可以为空 为空时查询所有数据
      * @param pageSum 页数
      * @return 角色list
      */
