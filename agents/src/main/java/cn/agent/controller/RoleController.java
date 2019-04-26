@@ -1,14 +1,14 @@
 package cn.agent.controller;
 
-import cn.agent.pojo.Client;
-import cn.agent.pojo.Log;
-import cn.agent.pojo.Role;
-import cn.agent.pojo.Users;
+import cn.agent.pojo.*;
+import cn.agent.service.JurisdictionService;
 import cn.agent.service.LogService;
 import cn.agent.service.RoleService;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.catalina.User;
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -31,7 +31,15 @@ class RoleController {
     @Autowired
     private
     RoleService roleService;
+    @Autowired
+    private
+    JurisdictionService jurisdictionService;
 
+    @ResponseBody
+    @RequestMapping(value={"findAllJuristidction","getAllJ","faj"})
+    public Object findAllJuristidction(){
+        return jurisdictionService.findAllJurisdiction( null );
+    }
     /**
      * 添加
      *
@@ -72,6 +80,38 @@ class RoleController {
     }
 
     /**
+     * 权限更新
+     * @param session
+     * @param data
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = {"/juisdictionUpdate", "juup"})
+    public
+    Object juisdictionUpdate(HttpSession session, String data) {
+        Role role=null;
+        try{
+            JSONObject jsonObject=JSON.parseObject( data );
+            role=roleService.findById( jsonObject.getLong( "roleid" ) );
+            role.getJurisdictions().clear();
+            JSONArray jsonArray=jsonObject.getJSONArray( "jdids" );
+            for(int i=0;i<jsonArray.size();i++){
+                role.getJurisdictions().add( jurisdictionService.findById( jsonArray.getLong( i ) ) );
+            }
+            String s="修改角色:" + role.getRolename()+"的权限:";
+            for ( Jurisdiction j:role.getJurisdictions()) {
+                s+=j.getJdname()+"_";
+            }
+            role=roleService.update( role );
+            logService.insertLog( new Log( (Users) session.getAttribute( "user" ),s , new Date() ) );
+         }catch (Exception e){
+            e.printStackTrace();
+            return "数据丢失";
+        }
+
+        return role;
+    }
+    /**
      * 删除
      *
      * @param session
@@ -102,12 +142,12 @@ class RoleController {
      *
      * @return
      */
-    @RequestMapping(value = "bindrole")
+    @RequestMapping(value = {"bindrole","selAllRole"})
     @ResponseBody
     public
     Object FindAllRoleInfo() {
         List<Role> role = roleService.findAllRoleInfo();
-        return JSONArray.toJSONString( role );
+        return role  ;
     }
 
     @RequestMapping(value = {"readPageRoleData", "readPage"})

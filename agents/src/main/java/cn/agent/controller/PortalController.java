@@ -134,7 +134,6 @@ class PortalController {
             portal.setTypes( typesService.findById( portal.getPaperstype() ) );
             portal.setCreatetime( portalService.findById( portal.getPortalid() ).getCreatetime() );
             portal = portalService.update( portal );
-
             for (Linkman linkman : linkmans) {
                 linkmanService.update( linkman );
             }

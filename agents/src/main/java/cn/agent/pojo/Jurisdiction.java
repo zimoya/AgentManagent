@@ -39,15 +39,18 @@ public class Jurisdiction  implements Serializable {
 	@Column(name = "CREATETIME")
 	private Date createtime;
 	/**
-	 * 使用状态
+	 * 使用状态 0=启用 1=停用
 	 */
 	@Column(name = "STATUS")
 	private Long status;
 	/**
 	 * 角色
 	 */
-	@ManyToMany(targetEntity = Role.class,mappedBy = "jurisdictions")
-	private Set<Role> roles=new HashSet<Role>();
+/*
+	@ManyToMany(targetEntity = Role.class)
+
+	private Set<Role> roles;
+*/
 
 	public Long getJdid() {
 		return jdid;
@@ -89,12 +92,5 @@ public class Jurisdiction  implements Serializable {
 		this.status = status;
 	}
 
-	public Set<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
 
 }

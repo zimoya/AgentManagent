@@ -28,7 +28,7 @@ interface   JurisdictionService {
     /**
      * 根据条件获取满足条件的权限
      *
-     * @param jurisdiction 条件
+     * @param jurisdiction 条件 为null 查询 所有权限
      * @return 权限list
      */
     List<Jurisdiction> findAllJurisdiction(Jurisdiction jurisdiction);

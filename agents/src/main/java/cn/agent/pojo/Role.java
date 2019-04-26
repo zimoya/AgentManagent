@@ -46,7 +46,22 @@ public class Role  implements Serializable {
 	 * 权限
 	 */
 	@ManyToMany(targetEntity = Jurisdiction.class,cascade = CascadeType.MERGE)
-	private Set<Jurisdiction> jurisdictions=new HashSet<Jurisdiction>();
+	@JoinTable(
+			name="REROLEJD",//中间表名
+			joinColumns={@JoinColumn(name="roid")},//当前对象id在中间表的列名
+			inverseJoinColumns={@JoinColumn(name="jdid")}//关联的另一个表在中间表的列名
+	)
+	private Set<Jurisdiction> jurisdictions;
+
+	public
+	Set<Jurisdiction> getJurisdictions() {
+		return jurisdictions;
+	}
+
+	public
+	void setJurisdictions(Set<Jurisdiction> jurisdictions) {
+		this.jurisdictions = jurisdictions;
+	}
 
 	public Long getRoleid() {
 		return roleid;

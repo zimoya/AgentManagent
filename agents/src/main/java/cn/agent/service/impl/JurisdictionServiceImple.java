@@ -1,7 +1,9 @@
 package cn.agent.service.impl;
 
+import cn.agent.dao.JurisdictionDao;
 import cn.agent.pojo.Jurisdiction;
 import cn.agent.service.JurisdictionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,9 @@ import java.util.List;
 public
 class JurisdictionServiceImple implements JurisdictionService {
 
+    @Autowired
+    private
+    JurisdictionDao jurisdictionDao;
 
     @Override
     public
@@ -27,7 +32,11 @@ class JurisdictionServiceImple implements JurisdictionService {
     @Override
     public
     List<Jurisdiction> findAllJurisdiction(Jurisdiction jurisdiction) {
+        if(jurisdiction==null){
+            return jurisdictionDao.findAll();
+        }
         return null;
+
     }
 
     @Override
@@ -45,7 +54,7 @@ class JurisdictionServiceImple implements JurisdictionService {
     @Override
     public
     Jurisdiction findById(Long id) {
-        return null;
+        return jurisdictionDao.findById( id ).get();
     }
 
     @Override
