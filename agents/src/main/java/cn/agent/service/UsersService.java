@@ -18,6 +18,12 @@ interface UsersService {
     boolean update(Users users);
 
     /**
+     * 模糊查询用户名
+     * @param username
+     * @return
+     */
+    List<Users> findUserListByUsername(String username);
+    /**
      * 添加用户
      *
      * @param users 条件

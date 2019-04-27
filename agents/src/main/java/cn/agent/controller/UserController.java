@@ -170,7 +170,7 @@ public class UserController {
      */
     @RequestMapping(value = "/userInfo.json")
     @ResponseBody
-    public String findAllUserInfo(@Param("username") String username,@Param("roleId") long roleId,@Param("enable") Integer enable,@Param("pageSum")int pageSum){
+    public String findAllUserInfo(@Param("username") String username,@Param("roleId") Long roleId,@Param("enable") Integer enable,@Param("pageSum")Integer pageSum){
         System.out.println("=================================username="+username);
         System.out.println("=================================roleId="+roleId);
         System.out.println("=================================enable="+enable);
@@ -185,6 +185,17 @@ public class UserController {
         Page<Users> users1=usersService.findPageUsers(users,pageSum,pageSize);
         System.out.println(JSON.toJSONString(users1,true));
         return JSON.toJSONString(users1);
+    }
+    /**
+     * 查询所有的用户
+     * @return
+     */
+    @RequestMapping(value = {"/getuserByusername"})
+    @ResponseBody
+    public Object getuserByusername(String username){
+        List<Users> users1=usersService.findUserListByUsername( username );
+        System.out.println(JSON.toJSONString(users1,true));
+        return users1;
     }
 
 }

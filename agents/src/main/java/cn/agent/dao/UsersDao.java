@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.RepositoryDefinition;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -25,6 +26,13 @@ interface UsersDao extends JpaRepository<Users,Long> {
      * @return
      */
     Users findUsersByUsername(String username);
+
+    /**
+     * 模糊查询用户
+     * @param username
+     * @return
+     */
+    List<Users> findUserssByUsername(String username);
 
     /**
      * 根据用户名、角色是否启用查询所有用户

@@ -39,6 +39,12 @@ class UsersServiceImple implements UsersService {
 
     @Override
     public
+    List<Users> findUserListByUsername(String username) {
+        return usersDao.findUserssByUsername( username );
+    }
+
+    @Override
+    public
     boolean insert(Users users) {
         return false;
     }
@@ -60,6 +66,9 @@ class UsersServiceImple implements UsersService {
     public Page<Users> findPageUsers(Users users, int pageSum,int pageSize) {
         Pageable pageable= PageRequest.of(pageSum==0?0:pageSum,pageSize);
         Page<Users> users1=null;
+        if(users==null){
+            return usersDao.findAll( pageable );
+        }
         if(users!=null && (users.getUsername()==null||users.getUsername().equals("")) && users.getRole().getRoleid()==0){
             users1=usersDao.queryUsersByEnable(users.getEnable(),pageable);
         }else if(users!=null && (users.getUsername()!=null|| !users.getUsername().equals("")) && users.getRole().getRoleid()==0){
@@ -86,7 +95,7 @@ class UsersServiceImple implements UsersService {
     @Override
     public
     Users findById(Long id) {
-        return usersDao.getOne(id);
+        return usersDao.findById( id ).get();
     }
 
     @Override
